@@ -1,0 +1,2538 @@
+>>> N_THREADS= 1
+>>> Running raft containers
+68ba57fccf624d883c609273b029c9dd0ea6de0555e445819686c511695b012d
+c92764dd4992f9916beb8d02e59119c516d539a4907c2b4d8769bd867ad16c82
+123361ef7c62ba173e338a127be1701d985c9013e99438142772e27009756054
+268f2ed5b8acbf7e7dac90f2fb5855e48e23b58a05d8230da0369a100b6d8da0
+3c87b8fb9c8df5452d033aac786ba2fe835fcb3be237abf246d31dec5a033917
+>>> Starting raft servers
+>>> Connecting servers
+--- rpc(172.18.0.11:21001/init, {})
+{"Ok":null}
+
+--- rpc(172.18.0.11:21001/add-learner, [2, "172.18.0.12:21001"])
+{"Ok":{"matched":{"leader_id":{"term":1,"node_id":1},"index":2}}}
+
+--- rpc(172.18.0.11:21001/add-learner, [3, "172.18.0.13:21001"])
+{"Ok":{"matched":{"leader_id":{"term":1,"node_id":1},"index":3}}}
+
+--- rpc(172.18.0.11:21001/add-learner, [4, "172.18.0.14:21001"])
+{"Ok":{"matched":{"leader_id":{"term":1,"node_id":1},"index":4}}}
+
+--- rpc(172.18.0.11:21001/add-learner, [5, "172.18.0.15:21001"])
+{"Ok":{"matched":{"leader_id":{"term":1,"node_id":1},"index":5}}}
+
+--- rpc(172.18.0.11:21001/change-membership, [1, 2, 3, 4, 5])
+{"Ok":{"log_id":{"leader_id":{"term":1,"node_id":1},"index":7},"data":{"value":null},"membership":{"configs":[[1,2,3,4,5]],"nodes":{"1":{"addr":"172.18.0.11:21001","data":{}},"2":{"addr":"172.18.0.12:21001","data":{}},"3":{"addr":"172.18.0.13:21001","data":{}},"4":{"addr":"172.18.0.14:21001","data":{}},"5":{"addr":"172.18.0.15:21001","data":{}}}}}}
+
+--- rpc(172.18.0.11:21001/metrics, )
+{"Ok":{"running_state":{"Ok":null},"id":1,"state":"Leader","current_term":1,"last_log_index":7,"last_applied":{"leader_id":{"term":1,"node_id":1},"index":7},"current_leader":1,"membership_config":{"log_id":{"leader_id":{"term":1,"node_id":1},"index":7},"membership":{"configs":[[1,2,3,4,5]],"nodes":{"1":{"addr":"172.18.0.11:21001","data":{}},"2":{"addr":"172.18.0.12:21001","data":{}},"3":{"addr":"172.18.0.13:21001","data":{}},"4":{"addr":"172.18.0.14:21001","data":{}},"5":{"addr":"172.18.0.15:21001","data":{}}}},"all_members":[1,2,3,4,5]},"snapshot":null,"leader_metrics":{"version":17,"data":{"replication":{"2":{"matched_leader_id":{"term":1,"node_id":1},"matched_index":7},"3":{"matched_leader_id":{"term":1,"node_id":1},"matched_index":7},"4":{"matched_leader_id":{"term":1,"node_id":1},"matched_index":6},"5":{"matched_leader_id":{"term":1,"node_id":1},"matched_index":7}}}}}}
+
+Waiting for workload completion...
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.012       0.009       0.007       0.008       0.080       
+user        0.005       0.001       0.001       0.005       0.026       
+sys         0.004       0.002       0.000       0.004       0.039       
+raft_1
+raft_2
+raft_3
+raft_4
+raft_5
+<<< N_THREADS= 1
+>>> N_THREADS= 2
+>>> Running raft containers
+6225a211c30d57fa8349bf922baf13abac3e62e386e0bd4d5e1eed32538b2b84
+344d4a1ac70478c11066f29752dddddba2c9cf6cdc4e61ac5103a7fc22e82cf3
+0cf3322f62a8c6fb9ca2494d2dba51c125d6ebc733dc15983946d5d962eb2af6
+64e8a7d57602a588a15b3b869711171c8ac1934cf74ad88dafb5cd2cb4a784b4
+68c68a110d964ff6fbc8df8f3577a4e04bdc7924d147fd1d852ff5d7e3fac9a3
+>>> Starting raft servers
+>>> Connecting servers
+--- rpc(172.18.0.11:21001/init, {})
+{"Ok":null}
+
+--- rpc(172.18.0.11:21001/add-learner, [2, "172.18.0.12:21001"])
+{"Ok":{"matched":{"leader_id":{"term":1,"node_id":1},"index":2}}}
+
+--- rpc(172.18.0.11:21001/add-learner, [3, "172.18.0.13:21001"])
+{"Ok":{"matched":{"leader_id":{"term":1,"node_id":1},"index":3}}}
+
+--- rpc(172.18.0.11:21001/add-learner, [4, "172.18.0.14:21001"])
+{"Ok":{"matched":{"leader_id":{"term":1,"node_id":1},"index":4}}}
+
+--- rpc(172.18.0.11:21001/add-learner, [5, "172.18.0.15:21001"])
+{"Ok":{"matched":{"leader_id":{"term":1,"node_id":1},"index":5}}}
+
+--- rpc(172.18.0.11:21001/change-membership, [1, 2, 3, 4, 5])
+{"Ok":{"log_id":{"leader_id":{"term":1,"node_id":1},"index":7},"data":{"value":null},"membership":{"configs":[[1,2,3,4,5]],"nodes":{"1":{"addr":"172.18.0.11:21001","data":{}},"2":{"addr":"172.18.0.12:21001","data":{}},"3":{"addr":"172.18.0.13:21001","data":{}},"4":{"addr":"172.18.0.14:21001","data":{}},"5":{"addr":"172.18.0.15:21001","data":{}}}}}}
+
+--- rpc(172.18.0.11:21001/metrics, )
+{"Ok":{"running_state":{"Ok":null},"id":1,"state":"Leader","current_term":1,"last_log_index":7,"last_applied":{"leader_id":{"term":1,"node_id":1},"index":7},"current_leader":1,"membership_config":{"log_id":{"leader_id":{"term":1,"node_id":1},"index":7},"membership":{"configs":[[1,2,3,4,5]],"nodes":{"1":{"addr":"172.18.0.11:21001","data":{}},"2":{"addr":"172.18.0.12:21001","data":{}},"3":{"addr":"172.18.0.13:21001","data":{}},"4":{"addr":"172.18.0.14:21001","data":{}},"5":{"addr":"172.18.0.15:21001","data":{}}}},"all_members":[1,2,3,4,5]},"snapshot":null,"leader_metrics":{"version":18,"data":{"replication":{"2":{"matched_leader_id":{"term":1,"node_id":1},"matched_index":7},"3":{"matched_leader_id":{"term":1,"node_id":1},"matched_index":7},"4":{"matched_leader_id":{"term":1,"node_id":1},"matched_index":7},"5":{"matched_leader_id":{"term":1,"node_id":1},"matched_index":7}}}}}}
+
+Waiting for workload completion...
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.014       0.012       0.007       0.008       0.080       
+user        0.005       0.001       0.001       0.005       0.010       
+sys         0.004       0.001       0.000       0.004       0.012       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.014       0.012       0.007       0.008       0.072       
+user        0.005       0.001       0.001       0.005       0.010       
+sys         0.004       0.001       0.000       0.004       0.014       
+raft_1
+raft_2
+raft_3
+raft_4
+raft_5
+<<< N_THREADS= 2
+>>> N_THREADS= 3
+>>> Running raft containers
+69dd784f9d51274a5ddd9ea22a039058df14faf1606f1585e717ea4a0be95d95
+5b242b9d3d209ef0c070e96ed47f67dc81ce1ba4d92145931d6a6d1b4ed69e78
+c0c01bbbd8b20c6a3f82e2c2b8b5c6cb25e00fa376bbef522f4fb8a7d2ec2cd9
+726d314b9641b3cb00d29a3521e568aeadf238584675f3eb20f1711755f1c2ed
+190f387b210825ce5e64f6b44de750d867d236dd19731b5e0a0e6cda8dfa8a68
+>>> Starting raft servers
+>>> Connecting servers
+--- rpc(172.18.0.11:21001/init, {})
+{"Ok":null}
+
+--- rpc(172.18.0.11:21001/add-learner, [2, "172.18.0.12:21001"])
+{"Ok":{"matched":{"leader_id":{"term":1,"node_id":1},"index":2}}}
+
+--- rpc(172.18.0.11:21001/add-learner, [3, "172.18.0.13:21001"])
+{"Ok":{"matched":{"leader_id":{"term":1,"node_id":1},"index":3}}}
+
+--- rpc(172.18.0.11:21001/add-learner, [4, "172.18.0.14:21001"])
+{"Ok":{"matched":{"leader_id":{"term":1,"node_id":1},"index":4}}}
+
+--- rpc(172.18.0.11:21001/add-learner, [5, "172.18.0.15:21001"])
+{"Ok":{"matched":{"leader_id":{"term":1,"node_id":1},"index":5}}}
+
+--- rpc(172.18.0.11:21001/change-membership, [1, 2, 3, 4, 5])
+{"Ok":{"log_id":{"leader_id":{"term":1,"node_id":1},"index":7},"data":{"value":null},"membership":{"configs":[[1,2,3,4,5]],"nodes":{"1":{"addr":"172.18.0.11:21001","data":{}},"2":{"addr":"172.18.0.12:21001","data":{}},"3":{"addr":"172.18.0.13:21001","data":{}},"4":{"addr":"172.18.0.14:21001","data":{}},"5":{"addr":"172.18.0.15:21001","data":{}}}}}}
+
+--- rpc(172.18.0.11:21001/metrics, )
+{"Ok":{"running_state":{"Ok":null},"id":1,"state":"Leader","current_term":1,"last_log_index":7,"last_applied":{"leader_id":{"term":1,"node_id":1},"index":7},"current_leader":1,"membership_config":{"log_id":{"leader_id":{"term":1,"node_id":1},"index":7},"membership":{"configs":[[1,2,3,4,5]],"nodes":{"1":{"addr":"172.18.0.11:21001","data":{}},"2":{"addr":"172.18.0.12:21001","data":{}},"3":{"addr":"172.18.0.13:21001","data":{}},"4":{"addr":"172.18.0.14:21001","data":{}},"5":{"addr":"172.18.0.15:21001","data":{}}}},"all_members":[1,2,3,4,5]},"snapshot":null,"leader_metrics":{"version":18,"data":{"replication":{"2":{"matched_leader_id":{"term":1,"node_id":1},"matched_index":7},"3":{"matched_leader_id":{"term":1,"node_id":1},"matched_index":7},"4":{"matched_leader_id":{"term":1,"node_id":1},"matched_index":7},"5":{"matched_leader_id":{"term":1,"node_id":1},"matched_index":7}}}}}}
+
+Waiting for workload completion...
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.016       0.013       0.007       0.009       0.114       
+user        0.005       0.001       0.001       0.005       0.017       
+sys         0.004       0.002       0.000       0.004       0.034       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.016       0.013       0.007       0.009       0.182       
+user        0.005       0.001       0.001       0.005       0.013       
+sys         0.004       0.002       0.000       0.004       0.025       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.016       0.013       0.007       0.009       0.158       
+user        0.005       0.001       0.001       0.005       0.015       
+sys         0.004       0.002       0.000       0.004       0.017       
+raft_1
+raft_2
+raft_3
+raft_4
+raft_5
+<<< N_THREADS= 3
+>>> N_THREADS= 4
+>>> Running raft containers
+7ef8aa2a1a9c24a45779c2ef6b2986ba4b11814de18cce3cda8400b78c8dff19
+5ce4ebc52f6b540f9589abae1c47dc7ee5f741911fc9da75a8716729529ee688
+ced2ee7c8a2dd4623691b30ece3c3bf65ca175f37ee927aa5886145705dcf20c
+866d77a18ea9469be82790ace4d988bbe207178e4146b87bf6dd3474c907e2c1
+a84bb28b3692d8e6b35e0d5eb052e63479d6800d90e8e2d87e7375036c5f760d
+>>> Starting raft servers
+>>> Connecting servers
+--- rpc(172.18.0.11:21001/init, {})
+{"Ok":null}
+
+--- rpc(172.18.0.11:21001/add-learner, [2, "172.18.0.12:21001"])
+{"Ok":{"matched":{"leader_id":{"term":1,"node_id":1},"index":2}}}
+
+--- rpc(172.18.0.11:21001/add-learner, [3, "172.18.0.13:21001"])
+{"Ok":{"matched":{"leader_id":{"term":1,"node_id":1},"index":3}}}
+
+--- rpc(172.18.0.11:21001/add-learner, [4, "172.18.0.14:21001"])
+{"Ok":{"matched":{"leader_id":{"term":1,"node_id":1},"index":4}}}
+
+--- rpc(172.18.0.11:21001/add-learner, [5, "172.18.0.15:21001"])
+{"Ok":{"matched":{"leader_id":{"term":1,"node_id":1},"index":5}}}
+
+--- rpc(172.18.0.11:21001/change-membership, [1, 2, 3, 4, 5])
+{"Ok":{"log_id":{"leader_id":{"term":1,"node_id":1},"index":7},"data":{"value":null},"membership":{"configs":[[1,2,3,4,5]],"nodes":{"1":{"addr":"172.18.0.11:21001","data":{}},"2":{"addr":"172.18.0.12:21001","data":{}},"3":{"addr":"172.18.0.13:21001","data":{}},"4":{"addr":"172.18.0.14:21001","data":{}},"5":{"addr":"172.18.0.15:21001","data":{}}}}}}
+
+--- rpc(172.18.0.11:21001/metrics, )
+{"Ok":{"running_state":{"Ok":null},"id":1,"state":"Leader","current_term":1,"last_log_index":7,"last_applied":{"leader_id":{"term":1,"node_id":1},"index":7},"current_leader":1,"membership_config":{"log_id":{"leader_id":{"term":1,"node_id":1},"index":7},"membership":{"configs":[[1,2,3,4,5]],"nodes":{"1":{"addr":"172.18.0.11:21001","data":{}},"2":{"addr":"172.18.0.12:21001","data":{}},"3":{"addr":"172.18.0.13:21001","data":{}},"4":{"addr":"172.18.0.14:21001","data":{}},"5":{"addr":"172.18.0.15:21001","data":{}}}},"all_members":[1,2,3,4,5]},"snapshot":null,"leader_metrics":{"version":16,"data":{"replication":{"2":{"matched_leader_id":{"term":1,"node_id":1},"matched_index":7},"3":{"matched_leader_id":{"term":1,"node_id":1},"matched_index":6},"4":{"matched_leader_id":{"term":1,"node_id":1},"matched_index":7},"5":{"matched_leader_id":{"term":1,"node_id":1},"matched_index":6}}}}}}
+
+Waiting for workload completion...
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.017       0.013       0.007       0.012       0.189       
+user        0.005       0.001       0.001       0.005       0.013       
+sys         0.004       0.002       0.000       0.004       0.017       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.017       0.013       0.006       0.012       0.125       
+user        0.005       0.001       0.001       0.005       0.064       
+sys         0.004       0.002       0.000       0.004       0.062       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.017       0.013       0.007       0.012       0.195       
+user        0.005       0.001       0.001       0.005       0.012       
+sys         0.004       0.002       0.000       0.004       0.017       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.018       0.013       0.007       0.012       0.198       
+user        0.005       0.001       0.001       0.005       0.013       
+sys         0.004       0.002       0.000       0.004       0.018       
+raft_1
+raft_2
+raft_3
+raft_4
+raft_5
+<<< N_THREADS= 4
+>>> N_THREADS= 5
+>>> Running raft containers
+4c24ae3e59e3300fc86f61a5f3d729ea0bf8902431a682266ccda388aa822643
+5f5dda97099828da18344215563432901d8d0b458049b366d9e08a7611ea5df5
+5f662944994f6ab4846d6df4ad2ef169c37ec2966216a18905b421cc107aaba1
+e91e97eb4f675e5df3036b7416c1c893b7c18eec1c0606b1bcb65ef3faf83a25
+584fff8020893f9affa9bf1b6e6f213c5109cc2a2fb7d136931deb9b3aa8f7c1
+>>> Starting raft servers
+>>> Connecting servers
+--- rpc(172.18.0.11:21001/init, {})
+{"Ok":null}
+
+--- rpc(172.18.0.11:21001/add-learner, [2, "172.18.0.12:21001"])
+{"Ok":{"matched":{"leader_id":{"term":1,"node_id":1},"index":2}}}
+
+--- rpc(172.18.0.11:21001/add-learner, [3, "172.18.0.13:21001"])
+{"Ok":{"matched":{"leader_id":{"term":1,"node_id":1},"index":3}}}
+
+--- rpc(172.18.0.11:21001/add-learner, [4, "172.18.0.14:21001"])
+{"Ok":{"matched":{"leader_id":{"term":1,"node_id":1},"index":4}}}
+
+--- rpc(172.18.0.11:21001/add-learner, [5, "172.18.0.15:21001"])
+{"Ok":{"matched":{"leader_id":{"term":1,"node_id":1},"index":5}}}
+
+--- rpc(172.18.0.11:21001/change-membership, [1, 2, 3, 4, 5])
+{"Ok":{"log_id":{"leader_id":{"term":1,"node_id":1},"index":7},"data":{"value":null},"membership":{"configs":[[1,2,3,4,5]],"nodes":{"1":{"addr":"172.18.0.11:21001","data":{}},"2":{"addr":"172.18.0.12:21001","data":{}},"3":{"addr":"172.18.0.13:21001","data":{}},"4":{"addr":"172.18.0.14:21001","data":{}},"5":{"addr":"172.18.0.15:21001","data":{}}}}}}
+
+--- rpc(172.18.0.11:21001/metrics, )
+{"Ok":{"running_state":{"Ok":null},"id":1,"state":"Leader","current_term":1,"last_log_index":7,"last_applied":{"leader_id":{"term":1,"node_id":1},"index":7},"current_leader":1,"membership_config":{"log_id":{"leader_id":{"term":1,"node_id":1},"index":7},"membership":{"configs":[[1,2,3,4,5]],"nodes":{"1":{"addr":"172.18.0.11:21001","data":{}},"2":{"addr":"172.18.0.12:21001","data":{}},"3":{"addr":"172.18.0.13:21001","data":{}},"4":{"addr":"172.18.0.14:21001","data":{}},"5":{"addr":"172.18.0.15:21001","data":{}}}},"all_members":[1,2,3,4,5]},"snapshot":null,"leader_metrics":{"version":17,"data":{"replication":{"2":{"matched_leader_id":{"term":1,"node_id":1},"matched_index":7},"3":{"matched_leader_id":{"term":1,"node_id":1},"matched_index":7},"4":{"matched_leader_id":{"term":1,"node_id":1},"matched_index":6},"5":{"matched_leader_id":{"term":1,"node_id":1},"matched_index":7}}}}}}
+
+Waiting for workload completion...
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.020       0.014       0.007       0.014       0.162       
+user        0.005       0.001       0.001       0.005       0.012       
+sys         0.004       0.002       0.000       0.004       0.019       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.020       0.014       0.007       0.014       0.133       
+user        0.005       0.001       0.001       0.005       0.019       
+sys         0.004       0.002       0.000       0.004       0.055       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.020       0.014       0.007       0.014       0.216       
+user        0.005       0.001       0.001       0.005       0.015       
+sys         0.004       0.002       0.000       0.004       0.020       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.020       0.014       0.007       0.014       0.175       
+user        0.005       0.001       0.001       0.005       0.015       
+sys         0.004       0.002       0.000       0.004       0.023       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.020       0.014       0.007       0.014       0.110       
+user        0.005       0.001       0.001       0.005       0.018       
+sys         0.004       0.002       0.000       0.004       0.040       
+raft_1
+raft_2
+raft_3
+raft_4
+raft_5
+<<< N_THREADS= 5
+>>> N_THREADS= 6
+>>> Running raft containers
+b6d9fa4aa5200f9359e8e3fc904b767f9442cfc8fe9789d0272398eb248b9f7b
+1099d609b78789cb3c6860babe50164982c3bd8e1cdae48d79714d1abdceab6b
+faf35a1a2e3111624f8205f5ea22869dd5129fce7a723954d79e2a52104878b7
+4f23497dbce13f92720efa290c2ea25895c424cf64a1d0ee149955cfbe87d6bc
+459d124b09821ec6b3fe33086bfcc51e530e3f29251a09e1f3598581bf1e1d72
+>>> Starting raft servers
+>>> Connecting servers
+--- rpc(172.18.0.11:21001/init, {})
+{"Ok":null}
+
+--- rpc(172.18.0.11:21001/add-learner, [2, "172.18.0.12:21001"])
+{"Ok":{"matched":{"leader_id":{"term":1,"node_id":1},"index":2}}}
+
+--- rpc(172.18.0.11:21001/add-learner, [3, "172.18.0.13:21001"])
+{"Ok":{"matched":{"leader_id":{"term":1,"node_id":1},"index":3}}}
+
+--- rpc(172.18.0.11:21001/add-learner, [4, "172.18.0.14:21001"])
+{"Ok":{"matched":{"leader_id":{"term":1,"node_id":1},"index":4}}}
+
+--- rpc(172.18.0.11:21001/add-learner, [5, "172.18.0.15:21001"])
+{"Ok":{"matched":{"leader_id":{"term":1,"node_id":1},"index":5}}}
+
+--- rpc(172.18.0.11:21001/change-membership, [1, 2, 3, 4, 5])
+{"Ok":{"log_id":{"leader_id":{"term":1,"node_id":1},"index":7},"data":{"value":null},"membership":{"configs":[[1,2,3,4,5]],"nodes":{"1":{"addr":"172.18.0.11:21001","data":{}},"2":{"addr":"172.18.0.12:21001","data":{}},"3":{"addr":"172.18.0.13:21001","data":{}},"4":{"addr":"172.18.0.14:21001","data":{}},"5":{"addr":"172.18.0.15:21001","data":{}}}}}}
+
+--- rpc(172.18.0.11:21001/metrics, )
+{"Ok":{"running_state":{"Ok":null},"id":1,"state":"Leader","current_term":1,"last_log_index":7,"last_applied":{"leader_id":{"term":1,"node_id":1},"index":7},"current_leader":1,"membership_config":{"log_id":{"leader_id":{"term":1,"node_id":1},"index":7},"membership":{"configs":[[1,2,3,4,5]],"nodes":{"1":{"addr":"172.18.0.11:21001","data":{}},"2":{"addr":"172.18.0.12:21001","data":{}},"3":{"addr":"172.18.0.13:21001","data":{}},"4":{"addr":"172.18.0.14:21001","data":{}},"5":{"addr":"172.18.0.15:21001","data":{}}}},"all_members":[1,2,3,4,5]},"snapshot":null,"leader_metrics":{"version":16,"data":{"replication":{"2":{"matched_leader_id":{"term":1,"node_id":1},"matched_index":7},"3":{"matched_leader_id":{"term":1,"node_id":1},"matched_index":6},"4":{"matched_leader_id":{"term":1,"node_id":1},"matched_index":6},"5":{"matched_leader_id":{"term":1,"node_id":1},"matched_index":7}}}}}}
+
+Waiting for workload completion...
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.023       0.015       0.007       0.017       0.129       
+user        0.005       0.001       0.001       0.005       0.012       
+sys         0.004       0.002       0.000       0.004       0.015       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.023       0.015       0.007       0.017       0.110       
+user        0.005       0.001       0.001       0.005       0.015       
+sys         0.004       0.002       0.000       0.004       0.036       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.023       0.015       0.007       0.017       0.116       
+user        0.005       0.001       0.001       0.005       0.017       
+sys         0.004       0.002       0.000       0.004       0.028       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.023       0.016       0.007       0.017       0.131       
+user        0.005       0.001       0.001       0.005       0.016       
+sys         0.004       0.002       0.000       0.004       0.027       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.023       0.016       0.007       0.017       0.162       
+user        0.005       0.001       0.001       0.005       0.011       
+sys         0.004       0.002       0.000       0.004       0.017       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.023       0.016       0.007       0.017       0.150       
+user        0.005       0.001       0.001       0.005       0.014       
+sys         0.004       0.002       0.000       0.004       0.020       
+raft_1
+raft_2
+raft_3
+raft_4
+raft_5
+<<< N_THREADS= 6
+>>> N_THREADS= 7
+>>> Running raft containers
+85c7a8e5282802a5f59640a33eef98c7b54fcc8171bb0357613ebbb9a7dfbce1
+53fd44a442b14ac178eca7b50b657d4e2d0cf084c9424c8c3fc764afe896f605
+b8724e8409a3af2e8ffbb18fd056d847ffd55c216e5f0c868f4f8b2424189229
+5c6cfdedda9a9f2103eed37a57278098e2d001bb1e618a974b0ab2d7aefadc0b
+47b80f39309366d5087d7ba58130c8677cda48de7199e762560967a81d8f43be
+>>> Starting raft servers
+>>> Connecting servers
+--- rpc(172.18.0.11:21001/init, {})
+{"Ok":null}
+
+--- rpc(172.18.0.11:21001/add-learner, [2, "172.18.0.12:21001"])
+{"Ok":{"matched":{"leader_id":{"term":1,"node_id":1},"index":2}}}
+
+--- rpc(172.18.0.11:21001/add-learner, [3, "172.18.0.13:21001"])
+{"Ok":{"matched":{"leader_id":{"term":1,"node_id":1},"index":3}}}
+
+--- rpc(172.18.0.11:21001/add-learner, [4, "172.18.0.14:21001"])
+{"Ok":{"matched":{"leader_id":{"term":1,"node_id":1},"index":4}}}
+
+--- rpc(172.18.0.11:21001/add-learner, [5, "172.18.0.15:21001"])
+{"Ok":{"matched":{"leader_id":{"term":1,"node_id":1},"index":5}}}
+
+--- rpc(172.18.0.11:21001/change-membership, [1, 2, 3, 4, 5])
+{"Ok":{"log_id":{"leader_id":{"term":1,"node_id":1},"index":7},"data":{"value":null},"membership":{"configs":[[1,2,3,4,5]],"nodes":{"1":{"addr":"172.18.0.11:21001","data":{}},"2":{"addr":"172.18.0.12:21001","data":{}},"3":{"addr":"172.18.0.13:21001","data":{}},"4":{"addr":"172.18.0.14:21001","data":{}},"5":{"addr":"172.18.0.15:21001","data":{}}}}}}
+
+--- rpc(172.18.0.11:21001/metrics, )
+{"Ok":{"running_state":{"Ok":null},"id":1,"state":"Leader","current_term":1,"last_log_index":7,"last_applied":{"leader_id":{"term":1,"node_id":1},"index":7},"current_leader":1,"membership_config":{"log_id":{"leader_id":{"term":1,"node_id":1},"index":7},"membership":{"configs":[[1,2,3,4,5]],"nodes":{"1":{"addr":"172.18.0.11:21001","data":{}},"2":{"addr":"172.18.0.12:21001","data":{}},"3":{"addr":"172.18.0.13:21001","data":{}},"4":{"addr":"172.18.0.14:21001","data":{}},"5":{"addr":"172.18.0.15:21001","data":{}}}},"all_members":[1,2,3,4,5]},"snapshot":null,"leader_metrics":{"version":16,"data":{"replication":{"2":{"matched_leader_id":{"term":1,"node_id":1},"matched_index":6},"3":{"matched_leader_id":{"term":1,"node_id":1},"matched_index":6},"4":{"matched_leader_id":{"term":1,"node_id":1},"matched_index":7},"5":{"matched_leader_id":{"term":1,"node_id":1},"matched_index":7}}}}}}
+
+Waiting for workload completion...
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.026       0.018       0.007       0.020       0.758       
+user        0.005       0.001       0.001       0.005       0.030       
+sys         0.004       0.002       0.000       0.004       0.069       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.026       0.020       0.007       0.020       1.132       
+user        0.005       0.001       0.001       0.005       0.031       
+sys         0.004       0.002       0.000       0.004       0.058       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.026       0.020       0.007       0.020       1.095       
+user        0.005       0.001       0.001       0.005       0.016       
+sys         0.004       0.002       0.000       0.004       0.152       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.026       0.020       0.007       0.020       1.082       
+user        0.005       0.001       0.001       0.005       0.017       
+sys         0.004       0.002       0.000       0.004       0.028       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.027       0.019       0.007       0.020       1.000       
+user        0.005       0.001       0.001       0.005       0.024       
+sys         0.004       0.002       0.000       0.004       0.031       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.027       0.019       0.007       0.020       0.777       
+user        0.005       0.001       0.001       0.005       0.014       
+sys         0.004       0.002       0.000       0.004       0.025       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.027       0.020       0.007       0.020       1.230       
+user        0.005       0.001       0.001       0.005       0.019       
+sys         0.004       0.002       0.000       0.004       0.025       
+raft_1
+raft_2
+raft_3
+raft_4
+raft_5
+<<< N_THREADS= 7
+>>> N_THREADS= 8
+>>> Running raft containers
+2f38475fa89fe87233f83b6750145355c5d9df4b41931bbafe1524744a3f23a5
+666863e0238a44795292c68e6e3202b99259b14a2483083eefcf3747f101a26d
+5b13c2572f308dbcc7ec0a74e07ecfeacd46d90e790d73979dbb96871e350c79
+0a0bb17554d62afbdd508914bfe97bcc938963e25114e46db73053d45203ad01
+1c02c1333cbf7d67bdd862dd3072b2acc29d43a0b61f01fb128544cca1c3b024
+>>> Starting raft servers
+>>> Connecting servers
+--- rpc(172.18.0.11:21001/init, {})
+{"Ok":null}
+
+--- rpc(172.18.0.11:21001/add-learner, [2, "172.18.0.12:21001"])
+{"Ok":{"matched":{"leader_id":{"term":1,"node_id":1},"index":2}}}
+
+--- rpc(172.18.0.11:21001/add-learner, [3, "172.18.0.13:21001"])
+{"Ok":{"matched":{"leader_id":{"term":1,"node_id":1},"index":3}}}
+
+--- rpc(172.18.0.11:21001/add-learner, [4, "172.18.0.14:21001"])
+{"Ok":{"matched":{"leader_id":{"term":1,"node_id":1},"index":4}}}
+
+--- rpc(172.18.0.11:21001/add-learner, [5, "172.18.0.15:21001"])
+{"Ok":{"matched":{"leader_id":{"term":1,"node_id":1},"index":5}}}
+
+--- rpc(172.18.0.11:21001/change-membership, [1, 2, 3, 4, 5])
+{"Ok":{"log_id":{"leader_id":{"term":1,"node_id":1},"index":7},"data":{"value":null},"membership":{"configs":[[1,2,3,4,5]],"nodes":{"1":{"addr":"172.18.0.11:21001","data":{}},"2":{"addr":"172.18.0.12:21001","data":{}},"3":{"addr":"172.18.0.13:21001","data":{}},"4":{"addr":"172.18.0.14:21001","data":{}},"5":{"addr":"172.18.0.15:21001","data":{}}}}}}
+
+--- rpc(172.18.0.11:21001/metrics, )
+{"Ok":{"running_state":{"Ok":null},"id":1,"state":"Leader","current_term":1,"last_log_index":7,"last_applied":{"leader_id":{"term":1,"node_id":1},"index":7},"current_leader":1,"membership_config":{"log_id":{"leader_id":{"term":1,"node_id":1},"index":7},"membership":{"configs":[[1,2,3,4,5]],"nodes":{"1":{"addr":"172.18.0.11:21001","data":{}},"2":{"addr":"172.18.0.12:21001","data":{}},"3":{"addr":"172.18.0.13:21001","data":{}},"4":{"addr":"172.18.0.14:21001","data":{}},"5":{"addr":"172.18.0.15:21001","data":{}}}},"all_members":[1,2,3,4,5]},"snapshot":null,"leader_metrics":{"version":16,"data":{"replication":{"2":{"matched_leader_id":{"term":1,"node_id":1},"matched_index":6},"3":{"matched_leader_id":{"term":1,"node_id":1},"matched_index":7},"4":{"matched_leader_id":{"term":1,"node_id":1},"matched_index":6},"5":{"matched_leader_id":{"term":1,"node_id":1},"matched_index":7}}}}}}
+
+Waiting for workload completion...
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.030       0.018       0.007       0.023       0.193       
+user        0.005       0.001       0.000       0.005       0.012       
+sys         0.005       0.002       0.000       0.004       0.022       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.030       0.018       0.007       0.023       0.147       
+user        0.005       0.001       0.000       0.005       0.023       
+sys         0.005       0.002       0.000       0.004       0.026       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.030       0.018       0.007       0.023       0.187       
+user        0.005       0.001       0.001       0.005       0.014       
+sys         0.004       0.002       0.000       0.004       0.028       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.030       0.018       0.007       0.023       0.174       
+user        0.005       0.001       0.001       0.005       0.014       
+sys         0.005       0.002       0.000       0.004       0.025       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.030       0.018       0.007       0.023       0.207       
+user        0.005       0.001       0.001       0.005       0.020       
+sys         0.005       0.002       0.000       0.004       0.051       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.030       0.018       0.007       0.023       0.177       
+user        0.005       0.001       0.001       0.005       0.013       
+sys         0.005       0.002       0.000       0.004       0.022       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.030       0.018       0.007       0.023       0.208       
+user        0.005       0.001       0.001       0.005       0.013       
+sys         0.004       0.002       0.000       0.004       0.027       
+real        0.030       0.018       0.007       0.023       0.210       
+user        0.005       0.001       0.001       0.005       0.017       
+sys         0.005       0.002       0.000       0.004       0.023       
+raft_1
+raft_2
+raft_3
+raft_4
+raft_5
+<<< N_THREADS= 8
+>>> N_THREADS= 9
+>>> Running raft containers
+fde5ba74f1208e97c018b543b97577c35e56482a54cf1efacf18ebc3ecce9629
+2069c28c04b44a7fa1593eece24de111f0dbbd386b7fd631a9995b63a973c9cc
+d0ec47134a6c9cf8866f5fb9d61fdeea6a06e039ecdcab4d461b1f3d7282362b
+745ef22df6ce576682cd5bdcd2d83c6186eafb38a4ea94e16f35e4c4d4f1815e
+8f0d7ece97fee8775680afaa205c1db5324b09cc645234b42931c622d6829358
+>>> Starting raft servers
+>>> Connecting servers
+--- rpc(172.18.0.11:21001/init, {})
+{"Ok":null}
+
+--- rpc(172.18.0.11:21001/add-learner, [2, "172.18.0.12:21001"])
+{"Ok":{"matched":{"leader_id":{"term":1,"node_id":1},"index":2}}}
+
+--- rpc(172.18.0.11:21001/add-learner, [3, "172.18.0.13:21001"])
+{"Ok":{"matched":{"leader_id":{"term":1,"node_id":1},"index":3}}}
+
+--- rpc(172.18.0.11:21001/add-learner, [4, "172.18.0.14:21001"])
+{"Ok":{"matched":{"leader_id":{"term":1,"node_id":1},"index":4}}}
+
+--- rpc(172.18.0.11:21001/add-learner, [5, "172.18.0.15:21001"])
+{"Ok":{"matched":{"leader_id":{"term":1,"node_id":1},"index":5}}}
+
+--- rpc(172.18.0.11:21001/change-membership, [1, 2, 3, 4, 5])
+{"Ok":{"log_id":{"leader_id":{"term":1,"node_id":1},"index":7},"data":{"value":null},"membership":{"configs":[[1,2,3,4,5]],"nodes":{"1":{"addr":"172.18.0.11:21001","data":{}},"2":{"addr":"172.18.0.12:21001","data":{}},"3":{"addr":"172.18.0.13:21001","data":{}},"4":{"addr":"172.18.0.14:21001","data":{}},"5":{"addr":"172.18.0.15:21001","data":{}}}}}}
+
+--- rpc(172.18.0.11:21001/metrics, )
+{"Ok":{"running_state":{"Ok":null},"id":1,"state":"Leader","current_term":1,"last_log_index":7,"last_applied":{"leader_id":{"term":1,"node_id":1},"index":7},"current_leader":1,"membership_config":{"log_id":{"leader_id":{"term":1,"node_id":1},"index":7},"membership":{"configs":[[1,2,3,4,5]],"nodes":{"1":{"addr":"172.18.0.11:21001","data":{}},"2":{"addr":"172.18.0.12:21001","data":{}},"3":{"addr":"172.18.0.13:21001","data":{}},"4":{"addr":"172.18.0.14:21001","data":{}},"5":{"addr":"172.18.0.15:21001","data":{}}}},"all_members":[1,2,3,4,5]},"snapshot":null,"leader_metrics":{"version":18,"data":{"replication":{"2":{"matched_leader_id":{"term":1,"node_id":1},"matched_index":7},"3":{"matched_leader_id":{"term":1,"node_id":1},"matched_index":7},"4":{"matched_leader_id":{"term":1,"node_id":1},"matched_index":7},"5":{"matched_leader_id":{"term":1,"node_id":1},"matched_index":7}}}}}}
+
+Waiting for workload completion...
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.034       0.019       0.007       0.027       0.234       
+user        0.005       0.001       0.001       0.005       0.015       
+sys         0.005       0.002       0.000       0.005       0.034       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.034       0.020       0.008       0.027       0.312       
+user        0.005       0.001       0.001       0.005       0.012       
+sys         0.005       0.002       0.000       0.005       0.026       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.034       0.020       0.007       0.027       0.260       
+user        0.005       0.001       0.000       0.005       0.017       
+sys         0.005       0.002       0.000       0.005       0.040       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.034       0.020       0.007       0.027       0.292       
+user        0.005       0.001       0.001       0.005       0.020       
+sys         0.005       0.002       0.000       0.005       0.035       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.034       0.020       0.008       0.027       0.313       
+user        0.005       0.001       0.001       0.005       0.014       
+sys         0.005       0.002       0.000       0.005       0.034       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.034       0.020       0.008       0.027       0.179       
+user        0.005       0.001       0.001       0.005       0.023       
+sys         0.005       0.002       0.000       0.005       0.034       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.034       0.020       0.007       0.027       0.331       
+user        0.005       0.001       0.001       0.005       0.020       
+sys         0.005       0.002       0.000       0.005       0.042       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.034       0.020       0.007       0.027       0.263       
+user        0.005       0.001       0.001       0.005       0.014       
+sys         0.005       0.002       0.000       0.005       0.043       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.034       0.020       0.007       0.027       0.178       
+user        0.005       0.001       0.001       0.005       0.019       
+sys         0.005       0.002       0.000       0.005       0.048       
+raft_1
+raft_2
+raft_3
+raft_4
+raft_5
+<<< N_THREADS= 9
+>>> N_THREADS= 10
+>>> Running raft containers
+3a15886f188cb56d053dee7f8c20cf8550107d683367decadab9091d6fc2f8a2
+3415ba6c880fad26a0194a161770f2e5884431e01585922f1bfcc63160827b1b
+4cd52c9b96027f59307d713d1b9ae39029053216953145dc09a724ca0f1c1858
+0e473680f54254d916c4830c99b0fb5c8dfc123530abc965ee29e5dd94cb6338
+ecaa5ddaadc8535af7dcd87d4d39a4366f85ed5651023bb5eacd5546ac93c673
+>>> Starting raft servers
+>>> Connecting servers
+--- rpc(172.18.0.11:21001/init, {})
+{"Ok":null}
+
+--- rpc(172.18.0.11:21001/add-learner, [2, "172.18.0.12:21001"])
+{"Ok":{"matched":{"leader_id":{"term":1,"node_id":1},"index":2}}}
+
+--- rpc(172.18.0.11:21001/add-learner, [3, "172.18.0.13:21001"])
+{"Ok":{"matched":{"leader_id":{"term":1,"node_id":1},"index":3}}}
+
+--- rpc(172.18.0.11:21001/add-learner, [4, "172.18.0.14:21001"])
+{"Ok":{"matched":{"leader_id":{"term":1,"node_id":1},"index":4}}}
+
+--- rpc(172.18.0.11:21001/add-learner, [5, "172.18.0.15:21001"])
+{"Ok":{"matched":{"leader_id":{"term":1,"node_id":1},"index":5}}}
+
+--- rpc(172.18.0.11:21001/change-membership, [1, 2, 3, 4, 5])
+{"Ok":{"log_id":{"leader_id":{"term":1,"node_id":1},"index":7},"data":{"value":null},"membership":{"configs":[[1,2,3,4,5]],"nodes":{"1":{"addr":"172.18.0.11:21001","data":{}},"2":{"addr":"172.18.0.12:21001","data":{}},"3":{"addr":"172.18.0.13:21001","data":{}},"4":{"addr":"172.18.0.14:21001","data":{}},"5":{"addr":"172.18.0.15:21001","data":{}}}}}}
+
+--- rpc(172.18.0.11:21001/metrics, )
+{"Ok":{"running_state":{"Ok":null},"id":1,"state":"Leader","current_term":1,"last_log_index":7,"last_applied":{"leader_id":{"term":1,"node_id":1},"index":7},"current_leader":1,"membership_config":{"log_id":{"leader_id":{"term":1,"node_id":1},"index":7},"membership":{"configs":[[1,2,3,4,5]],"nodes":{"1":{"addr":"172.18.0.11:21001","data":{}},"2":{"addr":"172.18.0.12:21001","data":{}},"3":{"addr":"172.18.0.13:21001","data":{}},"4":{"addr":"172.18.0.14:21001","data":{}},"5":{"addr":"172.18.0.15:21001","data":{}}}},"all_members":[1,2,3,4,5]},"snapshot":null,"leader_metrics":{"version":16,"data":{"replication":{"2":{"matched_leader_id":{"term":1,"node_id":1},"matched_index":6},"3":{"matched_leader_id":{"term":1,"node_id":1},"matched_index":7},"4":{"matched_leader_id":{"term":1,"node_id":1},"matched_index":7},"5":{"matched_leader_id":{"term":1,"node_id":1},"matched_index":6}}}}}}
+
+Waiting for workload completion...
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.036       0.020       0.007       0.030       0.271       
+user        0.005       0.001       0.001       0.005       0.011       
+sys         0.005       0.002       0.000       0.005       0.023       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.036       0.019       0.007       0.030       0.184       
+user        0.005       0.001       0.001       0.005       0.020       
+sys         0.005       0.002       0.000       0.005       0.044       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.037       0.020       0.008       0.030       0.259       
+user        0.005       0.001       0.000       0.005       0.014       
+sys         0.005       0.002       0.000       0.005       0.038       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.037       0.020       0.007       0.030       0.221       
+user        0.005       0.001       0.001       0.005       0.012       
+sys         0.005       0.002       0.000       0.005       0.030       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.037       0.020       0.008       0.030       0.209       
+user        0.005       0.001       0.001       0.005       0.016       
+sys         0.005       0.002       0.000       0.005       0.022       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.037       0.020       0.007       0.030       0.258       
+user        0.005       0.001       0.001       0.005       0.018       
+sys         0.005       0.002       0.000       0.005       0.029       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.037       0.020       0.007       0.030       0.263       
+user        0.005       0.001       0.001       0.005       0.013       
+sys         0.005       0.002       0.000       0.005       0.023       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.037       0.020       0.007       0.030       0.165       
+user        0.005       0.001       0.000       0.005       0.014       
+sys         0.005       0.002       0.000       0.005       0.031       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.037       0.020       0.007       0.030       0.279       
+user        0.005       0.001       0.001       0.005       0.026       
+sys         0.005       0.002       0.000       0.005       0.027       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.037       0.020       0.007       0.030       0.190       
+user        0.005       0.001       0.001       0.005       0.020       
+sys         0.005       0.002       0.000       0.005       0.034       
+raft_1
+raft_2
+raft_3
+raft_4
+raft_5
+<<< N_THREADS= 10
+>>> N_THREADS= 11
+>>> Running raft containers
+b36c123cb624f21d4dfd8af8d8ff2bb26e9f48e7c43a929b6ae95a50240ba66b
+33560709d58f2dc9d3ce9f17fb035bb4578f76902a0d94c0c413faab11ae1562
+67c92f84922366ebcf18f2e7424cafd3ad7bbb153d27be3280b0dd10ed876d83
+1cb59b41ba25ad433949a3da95e950cf04fee9d37b032bdc2f25953779df933b
+b2c29c45c55f9e14cff027dcc6cda919b18b47307d0d9804e10d53690b66db92
+>>> Starting raft servers
+>>> Connecting servers
+--- rpc(172.18.0.11:21001/init, {})
+{"Ok":null}
+
+--- rpc(172.18.0.11:21001/add-learner, [2, "172.18.0.12:21001"])
+{"Ok":{"matched":{"leader_id":{"term":1,"node_id":1},"index":2}}}
+
+--- rpc(172.18.0.11:21001/add-learner, [3, "172.18.0.13:21001"])
+{"Ok":{"matched":{"leader_id":{"term":1,"node_id":1},"index":3}}}
+
+--- rpc(172.18.0.11:21001/add-learner, [4, "172.18.0.14:21001"])
+{"Ok":{"matched":{"leader_id":{"term":1,"node_id":1},"index":4}}}
+
+--- rpc(172.18.0.11:21001/add-learner, [5, "172.18.0.15:21001"])
+{"Ok":{"matched":{"leader_id":{"term":1,"node_id":1},"index":5}}}
+
+--- rpc(172.18.0.11:21001/change-membership, [1, 2, 3, 4, 5])
+{"Ok":{"log_id":{"leader_id":{"term":1,"node_id":1},"index":7},"data":{"value":null},"membership":{"configs":[[1,2,3,4,5]],"nodes":{"1":{"addr":"172.18.0.11:21001","data":{}},"2":{"addr":"172.18.0.12:21001","data":{}},"3":{"addr":"172.18.0.13:21001","data":{}},"4":{"addr":"172.18.0.14:21001","data":{}},"5":{"addr":"172.18.0.15:21001","data":{}}}}}}
+
+--- rpc(172.18.0.11:21001/metrics, )
+{"Ok":{"running_state":{"Ok":null},"id":1,"state":"Leader","current_term":1,"last_log_index":7,"last_applied":{"leader_id":{"term":1,"node_id":1},"index":7},"current_leader":1,"membership_config":{"log_id":{"leader_id":{"term":1,"node_id":1},"index":7},"membership":{"configs":[[1,2,3,4,5]],"nodes":{"1":{"addr":"172.18.0.11:21001","data":{}},"2":{"addr":"172.18.0.12:21001","data":{}},"3":{"addr":"172.18.0.13:21001","data":{}},"4":{"addr":"172.18.0.14:21001","data":{}},"5":{"addr":"172.18.0.15:21001","data":{}}}},"all_members":[1,2,3,4,5]},"snapshot":null,"leader_metrics":{"version":18,"data":{"replication":{"2":{"matched_leader_id":{"term":1,"node_id":1},"matched_index":7},"3":{"matched_leader_id":{"term":1,"node_id":1},"matched_index":7},"4":{"matched_leader_id":{"term":1,"node_id":1},"matched_index":7},"5":{"matched_leader_id":{"term":1,"node_id":1},"matched_index":7}}}}}}
+
+Waiting for workload completion...
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.040       0.021       0.008       0.034       0.589       
+user        0.005       0.001       0.001       0.005       0.014       
+sys         0.005       0.002       0.000       0.005       0.031       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.040       0.021       0.008       0.034       0.391       
+user        0.005       0.001       0.001       0.005       0.019       
+sys         0.005       0.002       0.000       0.005       0.024       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.041       0.021       0.008       0.034       0.533       
+user        0.005       0.001       0.001       0.005       0.013       
+sys         0.005       0.002       0.000       0.005       0.038       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.041       0.021       0.008       0.034       0.381       
+user        0.005       0.001       0.001       0.005       0.015       
+sys         0.005       0.002       0.000       0.005       0.027       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.041       0.020       0.009       0.034       0.211       
+user        0.005       0.001       0.000       0.005       0.022       
+sys         0.005       0.002       0.000       0.005       0.054       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.041       0.020       0.008       0.034       0.246       
+user        0.005       0.001       0.001       0.005       0.021       
+sys         0.005       0.002       0.000       0.005       0.029       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.041       0.021       0.009       0.034       0.640       
+user        0.005       0.001       0.001       0.005       0.018       
+sys         0.005       0.002       0.000       0.005       0.024       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.041       0.020       0.008       0.034       0.215       
+user        0.005       0.001       0.001       0.005       0.021       
+sys         0.005       0.002       0.000       0.005       0.034       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.041       0.021       0.008       0.034       0.493       
+user        0.005       0.001       0.001       0.005       0.015       
+sys         0.005       0.002       0.000       0.005       0.025       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.041       0.021       0.007       0.034       0.316       
+user        0.005       0.001       0.001       0.005       0.024       
+sys         0.005       0.002       0.000       0.005       0.040       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.041       0.022       0.008       0.034       0.635       
+user        0.005       0.001       0.001       0.005       0.014       
+sys         0.005       0.002       0.000       0.005       0.018       
+raft_1
+raft_2
+raft_3
+raft_4
+raft_5
+<<< N_THREADS= 11
+>>> N_THREADS= 12
+>>> Running raft containers
+d826a00500f7ff10106908f46fa25a3b78b0d27edc7394ae9d90271c21bcbc81
+36819a7cf5b7c3a796e3c437434ec9f0ee8c22f3b199ed4f16fb23c4f4e72ec2
+a6490bb23cbd806ef546550f3b806d4b8ade4fdafe8f2ee9edba093d413e0859
+c130eb17d0f3fbabd221d435babe3de70bc23ad0ed8f74f31876739ce466478d
+520dd49b069f5fd90f8eb2d013c92223740a3f0b11a900432a267d71e5c38b6f
+>>> Starting raft servers
+>>> Connecting servers
+--- rpc(172.18.0.11:21001/init, {})
+{"Ok":null}
+
+--- rpc(172.18.0.11:21001/add-learner, [2, "172.18.0.12:21001"])
+{"Ok":{"matched":{"leader_id":{"term":1,"node_id":1},"index":2}}}
+
+--- rpc(172.18.0.11:21001/add-learner, [3, "172.18.0.13:21001"])
+{"Ok":{"matched":{"leader_id":{"term":1,"node_id":1},"index":3}}}
+
+--- rpc(172.18.0.11:21001/add-learner, [4, "172.18.0.14:21001"])
+{"Ok":{"matched":{"leader_id":{"term":1,"node_id":1},"index":4}}}
+
+--- rpc(172.18.0.11:21001/add-learner, [5, "172.18.0.15:21001"])
+{"Ok":{"matched":{"leader_id":{"term":1,"node_id":1},"index":5}}}
+
+--- rpc(172.18.0.11:21001/change-membership, [1, 2, 3, 4, 5])
+{"Ok":{"log_id":{"leader_id":{"term":1,"node_id":1},"index":7},"data":{"value":null},"membership":{"configs":[[1,2,3,4,5]],"nodes":{"1":{"addr":"172.18.0.11:21001","data":{}},"2":{"addr":"172.18.0.12:21001","data":{}},"3":{"addr":"172.18.0.13:21001","data":{}},"4":{"addr":"172.18.0.14:21001","data":{}},"5":{"addr":"172.18.0.15:21001","data":{}}}}}}
+
+--- rpc(172.18.0.11:21001/metrics, )
+{"Ok":{"running_state":{"Ok":null},"id":1,"state":"Leader","current_term":1,"last_log_index":7,"last_applied":{"leader_id":{"term":1,"node_id":1},"index":7},"current_leader":1,"membership_config":{"log_id":{"leader_id":{"term":1,"node_id":1},"index":7},"membership":{"configs":[[1,2,3,4,5]],"nodes":{"1":{"addr":"172.18.0.11:21001","data":{}},"2":{"addr":"172.18.0.12:21001","data":{}},"3":{"addr":"172.18.0.13:21001","data":{}},"4":{"addr":"172.18.0.14:21001","data":{}},"5":{"addr":"172.18.0.15:21001","data":{}}}},"all_members":[1,2,3,4,5]},"snapshot":null,"leader_metrics":{"version":16,"data":{"replication":{"2":{"matched_leader_id":{"term":1,"node_id":1},"matched_index":7},"3":{"matched_leader_id":{"term":1,"node_id":1},"matched_index":6},"4":{"matched_leader_id":{"term":1,"node_id":1},"matched_index":7},"5":{"matched_leader_id":{"term":1,"node_id":1},"matched_index":6}}}}}}
+
+Waiting for workload completion...
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.044       0.021       0.010       0.038       0.405       
+user        0.005       0.001       0.000       0.005       0.018       
+sys         0.005       0.002       0.000       0.005       0.056       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.044       0.022       0.009       0.038       0.722       
+user        0.005       0.001       0.000       0.005       0.024       
+sys         0.005       0.002       0.000       0.005       0.048       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.044       0.021       0.009       0.038       0.391       
+user        0.005       0.001       0.001       0.005       0.018       
+sys         0.005       0.002       0.000       0.005       0.046       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.045       0.021       0.009       0.038       0.342       
+user        0.005       0.001       0.001       0.005       0.025       
+sys         0.005       0.002       0.000       0.005       0.038       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.045       0.022       0.009       0.038       0.424       
+user        0.005       0.001       0.001       0.005       0.023       
+sys         0.005       0.002       0.000       0.005       0.050       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.045       0.022       0.009       0.038       0.405       
+user        0.005       0.001       0.000       0.005       0.025       
+sys         0.005       0.002       0.000       0.005       0.045       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.045       0.022       0.009       0.038       0.430       
+user        0.005       0.001       0.000       0.005       0.030       
+sys         0.005       0.002       0.000       0.005       0.031       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.045       0.021       0.008       0.038       0.371       
+user        0.005       0.001       0.001       0.005       0.015       
+sys         0.005       0.002       0.000       0.005       0.035       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.045       0.022       0.008       0.038       0.524       
+user        0.005       0.001       0.001       0.005       0.030       
+sys         0.005       0.002       0.000       0.005       0.036       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.045       0.022       0.007       0.038       0.432       
+user        0.005       0.002       0.001       0.005       0.036       
+sys         0.005       0.002       0.000       0.005       0.047       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.045       0.021       0.007       0.038       0.336       
+user        0.005       0.001       0.001       0.005       0.018       
+sys         0.005       0.002       0.000       0.005       0.055       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.045       0.022       0.008       0.038       0.357       
+user        0.005       0.001       0.001       0.005       0.018       
+sys         0.005       0.002       0.000       0.005       0.038       
+raft_1
+raft_2
+raft_3
+raft_4
+raft_5
+<<< N_THREADS= 12
+>>> N_THREADS= 13
+>>> Running raft containers
+0c8aa624d31500234ba599731736e2864650b16782bac2bde763e757f7526709
+ee615198debd81a280076e63e3c15c6b62a061b89684a7197c7b43c74268ad0a
+f3a7d7c06a09deb47feb22836ef9c36cff0c3e9fe8c5718d12e50140e4a4d0b4
+5a0be842ed545b264aea6a26c12836d232cf49e27abd69b8498a80e2c04f2a5b
+a3c5c11e8c961522fb3f112c69edcfe58b27e13373270f18b46208298719b977
+>>> Starting raft servers
+>>> Connecting servers
+--- rpc(172.18.0.11:21001/init, {})
+{"Ok":null}
+
+--- rpc(172.18.0.11:21001/add-learner, [2, "172.18.0.12:21001"])
+{"Ok":{"matched":{"leader_id":{"term":1,"node_id":1},"index":2}}}
+
+--- rpc(172.18.0.11:21001/add-learner, [3, "172.18.0.13:21001"])
+{"Ok":{"matched":{"leader_id":{"term":1,"node_id":1},"index":3}}}
+
+--- rpc(172.18.0.11:21001/add-learner, [4, "172.18.0.14:21001"])
+{"Ok":{"matched":{"leader_id":{"term":1,"node_id":1},"index":4}}}
+
+--- rpc(172.18.0.11:21001/add-learner, [5, "172.18.0.15:21001"])
+{"Ok":{"matched":{"leader_id":{"term":1,"node_id":1},"index":5}}}
+
+--- rpc(172.18.0.11:21001/change-membership, [1, 2, 3, 4, 5])
+{"Ok":{"log_id":{"leader_id":{"term":1,"node_id":1},"index":7},"data":{"value":null},"membership":{"configs":[[1,2,3,4,5]],"nodes":{"1":{"addr":"172.18.0.11:21001","data":{}},"2":{"addr":"172.18.0.12:21001","data":{}},"3":{"addr":"172.18.0.13:21001","data":{}},"4":{"addr":"172.18.0.14:21001","data":{}},"5":{"addr":"172.18.0.15:21001","data":{}}}}}}
+
+--- rpc(172.18.0.11:21001/metrics, )
+{"Ok":{"running_state":{"Ok":null},"id":1,"state":"Leader","current_term":1,"last_log_index":7,"last_applied":{"leader_id":{"term":1,"node_id":1},"index":7},"current_leader":1,"membership_config":{"log_id":{"leader_id":{"term":1,"node_id":1},"index":7},"membership":{"configs":[[1,2,3,4,5]],"nodes":{"1":{"addr":"172.18.0.11:21001","data":{}},"2":{"addr":"172.18.0.12:21001","data":{}},"3":{"addr":"172.18.0.13:21001","data":{}},"4":{"addr":"172.18.0.14:21001","data":{}},"5":{"addr":"172.18.0.15:21001","data":{}}}},"all_members":[1,2,3,4,5]},"snapshot":null,"leader_metrics":{"version":16,"data":{"replication":{"2":{"matched_leader_id":{"term":1,"node_id":1},"matched_index":6},"3":{"matched_leader_id":{"term":1,"node_id":1},"matched_index":7},"4":{"matched_leader_id":{"term":1,"node_id":1},"matched_index":6},"5":{"matched_leader_id":{"term":1,"node_id":1},"matched_index":7}}}}}}
+
+Waiting for workload completion...
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.049       0.022       0.009       0.042       0.345       
+user        0.005       0.001       0.001       0.005       0.013       
+sys         0.005       0.002       0.000       0.005       0.048       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.049       0.022       0.010       0.042       0.376       
+user        0.005       0.001       0.001       0.005       0.013       
+sys         0.005       0.002       0.000       0.005       0.025       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.049       0.022       0.008       0.042       0.269       
+user        0.005       0.001       0.001       0.005       0.017       
+sys         0.005       0.002       0.000       0.005       0.031       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.049       0.022       0.010       0.043       0.444       
+user        0.005       0.001       0.000       0.005       0.014       
+sys         0.005       0.002       0.000       0.005       0.032       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.049       0.022       0.010       0.042       0.214       
+user        0.005       0.001       0.001       0.005       0.021       
+sys         0.005       0.002       0.000       0.005       0.024       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.049       0.023       0.009       0.043       0.421       
+user        0.005       0.001       0.000       0.005       0.014       
+sys         0.005       0.002       0.000       0.005       0.020       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.049       0.022       0.009       0.043       0.263       
+user        0.005       0.001       0.001       0.005       0.019       
+sys         0.005       0.002       0.000       0.005       0.031       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.049       0.022       0.008       0.043       0.324       
+user        0.005       0.001       0.000       0.005       0.016       
+sys         0.005       0.002       0.000       0.005       0.023       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.049       0.022       0.008       0.043       0.243       
+user        0.005       0.001       0.001       0.005       0.016       
+sys         0.005       0.002       0.000       0.005       0.035       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.049       0.022       0.009       0.042       0.345       
+user        0.005       0.001       0.001       0.005       0.022       
+sys         0.005       0.002       0.000       0.005       0.022       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.049       0.022       0.008       0.042       0.210       
+user        0.005       0.001       0.001       0.005       0.020       
+sys         0.005       0.002       0.000       0.005       0.034       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.049       0.022       0.008       0.043       0.201       
+user        0.006       0.001       0.001       0.005       0.018       
+sys         0.005       0.002       0.000       0.005       0.037       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.049       0.022       0.007       0.042       0.400       
+user        0.005       0.001       0.000       0.005       0.020       
+sys         0.005       0.002       0.000       0.005       0.028       
+raft_1
+raft_2
+raft_3
+raft_4
+raft_5
+<<< N_THREADS= 13
+>>> N_THREADS= 14
+>>> Running raft containers
+43518ccf44188625834cd47d5c8ac8573700ffaa4bfa9c9484a075caad579f4a
+335cb1458fb8eea3b789a196cc693c208936f920d243b6d8acddfa3ca717c6a8
+6559d0b9fd1c6775632e8246bd3a7f58199278e307c24d75711b6bf4a9c9bdbf
+1512ab08909133a2d57c8b6757a67cab8d1ba1bc3281354c259dcc6dd5b69c4a
+175e6417e4f4ba6788e9c6903ea3420168c7fd7dba7c61f4ccae021aa919ca5e
+>>> Starting raft servers
+>>> Connecting servers
+--- rpc(172.18.0.11:21001/init, {})
+{"Ok":null}
+
+--- rpc(172.18.0.11:21001/add-learner, [2, "172.18.0.12:21001"])
+{"Ok":{"matched":{"leader_id":{"term":1,"node_id":1},"index":2}}}
+
+--- rpc(172.18.0.11:21001/add-learner, [3, "172.18.0.13:21001"])
+{"Ok":{"matched":{"leader_id":{"term":1,"node_id":1},"index":3}}}
+
+--- rpc(172.18.0.11:21001/add-learner, [4, "172.18.0.14:21001"])
+{"Ok":{"matched":{"leader_id":{"term":1,"node_id":1},"index":4}}}
+
+--- rpc(172.18.0.11:21001/add-learner, [5, "172.18.0.15:21001"])
+{"Ok":{"matched":{"leader_id":{"term":1,"node_id":1},"index":5}}}
+
+--- rpc(172.18.0.11:21001/change-membership, [1, 2, 3, 4, 5])
+{"Ok":{"log_id":{"leader_id":{"term":1,"node_id":1},"index":7},"data":{"value":null},"membership":{"configs":[[1,2,3,4,5]],"nodes":{"1":{"addr":"172.18.0.11:21001","data":{}},"2":{"addr":"172.18.0.12:21001","data":{}},"3":{"addr":"172.18.0.13:21001","data":{}},"4":{"addr":"172.18.0.14:21001","data":{}},"5":{"addr":"172.18.0.15:21001","data":{}}}}}}
+
+--- rpc(172.18.0.11:21001/metrics, )
+{"Ok":{"running_state":{"Ok":null},"id":1,"state":"Leader","current_term":1,"last_log_index":7,"last_applied":{"leader_id":{"term":1,"node_id":1},"index":7},"current_leader":1,"membership_config":{"log_id":{"leader_id":{"term":1,"node_id":1},"index":7},"membership":{"configs":[[1,2,3,4,5]],"nodes":{"1":{"addr":"172.18.0.11:21001","data":{}},"2":{"addr":"172.18.0.12:21001","data":{}},"3":{"addr":"172.18.0.13:21001","data":{}},"4":{"addr":"172.18.0.14:21001","data":{}},"5":{"addr":"172.18.0.15:21001","data":{}}}},"all_members":[1,2,3,4,5]},"snapshot":null,"leader_metrics":{"version":16,"data":{"replication":{"2":{"matched_leader_id":{"term":1,"node_id":1},"matched_index":7},"3":{"matched_leader_id":{"term":1,"node_id":1},"matched_index":6},"4":{"matched_leader_id":{"term":1,"node_id":1},"matched_index":6},"5":{"matched_leader_id":{"term":1,"node_id":1},"matched_index":7}}}}}}
+
+Waiting for workload completion...
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.053       0.026       0.010       0.046       1.169       
+user        0.005       0.001       0.001       0.005       0.017       
+sys         0.005       0.002       0.000       0.005       0.028       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.053       0.028       0.009       0.046       1.639       
+user        0.006       0.001       0.001       0.005       0.016       
+sys         0.005       0.002       0.000       0.005       0.035       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.053       0.028       0.010       0.047       1.544       
+user        0.006       0.001       0.000       0.005       0.016       
+sys         0.005       0.002       0.000       0.005       0.024       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.053       0.027       0.010       0.046       1.251       
+user        0.006       0.001       0.001       0.005       0.019       
+sys         0.005       0.002       0.000       0.005       0.092       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.053       0.028       0.010       0.047       1.532       
+user        0.006       0.001       0.001       0.005       0.017       
+sys         0.005       0.002       0.000       0.005       0.023       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.053       0.026       0.010       0.047       1.174       
+user        0.006       0.002       0.001       0.005       0.037       
+sys         0.005       0.002       0.000       0.005       0.084       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.053       0.027       0.010       0.047       1.361       
+user        0.005       0.002       0.001       0.005       0.051       
+sys         0.005       0.002       0.000       0.005       0.095       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.053       0.027       0.009       0.047       1.263       
+user        0.005       0.001       0.001       0.005       0.019       
+sys         0.005       0.002       0.000       0.005       0.048       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.053       0.027       0.009       0.047       1.248       
+user        0.005       0.002       0.000       0.005       0.020       
+sys         0.005       0.002       0.000       0.005       0.038       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.053       0.027       0.008       0.046       1.310       
+user        0.006       0.002       0.001       0.005       0.020       
+sys         0.005       0.002       0.000       0.005       0.027       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.053       0.027       0.008       0.047       1.413       
+user        0.006       0.001       0.001       0.005       0.018       
+sys         0.005       0.002       0.000       0.005       0.035       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.053       0.028       0.008       0.046       1.484       
+user        0.006       0.002       0.001       0.005       0.075       
+sys         0.005       0.004       0.000       0.005       0.400       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.053       0.027       0.007       0.047       1.281       
+user        0.006       0.002       0.001       0.005       0.040       
+sys         0.005       0.002       0.000       0.005       0.080       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.053       0.028       0.007       0.047       1.505       
+user        0.006       0.003       0.001       0.005       0.236       
+sys         0.005       0.003       0.000       0.005       0.235       
+raft_1
+raft_2
+raft_3
+raft_4
+raft_5
+<<< N_THREADS= 14
+>>> N_THREADS= 15
+>>> Running raft containers
+f812d35108419abeaa93e08942936d32ea3539f22b086865f0212b7513c2b019
+c0a6f21bfff60f749c770df2d2008e4368af154357bb547138b9554d346db4ee
+55a14bff1c7d592253a39fc560d4619d1e967d217fb1e9de9f0a2162aba2b375
+242aabc23c9aad475481bed4b4d8a22d0b059887dbd6850ab0878682d7faa354
+ecd6085bd11e99a241795892908f9e38f408d06c6747086c8819667cc243b045
+>>> Starting raft servers
+>>> Connecting servers
+--- rpc(172.18.0.11:21001/init, {})
+{"Ok":null}
+
+--- rpc(172.18.0.11:21001/add-learner, [2, "172.18.0.12:21001"])
+{"Ok":{"matched":{"leader_id":{"term":1,"node_id":1},"index":2}}}
+
+--- rpc(172.18.0.11:21001/add-learner, [3, "172.18.0.13:21001"])
+{"Ok":{"matched":{"leader_id":{"term":1,"node_id":1},"index":3}}}
+
+--- rpc(172.18.0.11:21001/add-learner, [4, "172.18.0.14:21001"])
+{"Ok":{"matched":{"leader_id":{"term":1,"node_id":1},"index":4}}}
+
+--- rpc(172.18.0.11:21001/add-learner, [5, "172.18.0.15:21001"])
+{"Ok":{"matched":{"leader_id":{"term":1,"node_id":1},"index":5}}}
+
+--- rpc(172.18.0.11:21001/change-membership, [1, 2, 3, 4, 5])
+{"Ok":{"log_id":{"leader_id":{"term":1,"node_id":1},"index":7},"data":{"value":null},"membership":{"configs":[[1,2,3,4,5]],"nodes":{"1":{"addr":"172.18.0.11:21001","data":{}},"2":{"addr":"172.18.0.12:21001","data":{}},"3":{"addr":"172.18.0.13:21001","data":{}},"4":{"addr":"172.18.0.14:21001","data":{}},"5":{"addr":"172.18.0.15:21001","data":{}}}}}}
+
+--- rpc(172.18.0.11:21001/metrics, )
+{"Ok":{"running_state":{"Ok":null},"id":1,"state":"Leader","current_term":1,"last_log_index":7,"last_applied":{"leader_id":{"term":1,"node_id":1},"index":7},"current_leader":1,"membership_config":{"log_id":{"leader_id":{"term":1,"node_id":1},"index":7},"membership":{"configs":[[1,2,3,4,5]],"nodes":{"1":{"addr":"172.18.0.11:21001","data":{}},"2":{"addr":"172.18.0.12:21001","data":{}},"3":{"addr":"172.18.0.13:21001","data":{}},"4":{"addr":"172.18.0.14:21001","data":{}},"5":{"addr":"172.18.0.15:21001","data":{}}}},"all_members":[1,2,3,4,5]},"snapshot":null,"leader_metrics":{"version":18,"data":{"replication":{"2":{"matched_leader_id":{"term":1,"node_id":1},"matched_index":7},"3":{"matched_leader_id":{"term":1,"node_id":1},"matched_index":7},"4":{"matched_leader_id":{"term":1,"node_id":1},"matched_index":7},"5":{"matched_leader_id":{"term":1,"node_id":1},"matched_index":7}}}}}}
+
+Waiting for workload completion...
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.057       0.033       0.012       0.050       1.278       
+user        0.006       0.002       0.001       0.005       0.027       
+sys         0.005       0.003       0.000       0.005       0.064       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.057       0.034       0.010       0.050       1.346       
+user        0.006       0.002       0.001       0.005       0.035       
+sys         0.005       0.003       0.000       0.005       0.101       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.057       0.033       0.010       0.050       1.270       
+user        0.006       0.002       0.000       0.005       0.040       
+sys         0.005       0.002       0.000       0.005       0.058       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.057       0.032       0.008       0.050       1.225       
+user        0.006       0.002       0.001       0.005       0.027       
+sys         0.005       0.003       0.000       0.005       0.103       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.057       0.033       0.010       0.050       1.332       
+user        0.006       0.002       0.001       0.005       0.027       
+sys         0.005       0.003       0.000       0.005       0.134       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.057       0.031       0.011       0.050       1.190       
+user        0.005       0.002       0.001       0.005       0.028       
+sys         0.005       0.002       0.000       0.005       0.049       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.057       0.032       0.010       0.050       1.262       
+user        0.006       0.002       0.000       0.005       0.036       
+sys         0.005       0.002       0.000       0.005       0.073       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.057       0.033       0.009       0.050       1.302       
+user        0.005       0.002       0.001       0.005       0.077       
+sys         0.005       0.003       0.000       0.005       0.139       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.057       0.034       0.011       0.050       1.457       
+user        0.006       0.002       0.001       0.005       0.035       
+sys         0.005       0.002       0.000       0.005       0.045       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.057       0.033       0.009       0.050       1.261       
+user        0.006       0.002       0.000       0.005       0.028       
+sys         0.005       0.002       0.000       0.005       0.062       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.057       0.036       0.010       0.050       2.023       
+user        0.006       0.002       0.001       0.005       0.118       
+sys         0.005       0.003       0.000       0.005       0.182       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.057       0.034       0.008       0.050       1.821       
+user        0.006       0.002       0.001       0.005       0.025       
+sys         0.005       0.002       0.000       0.005       0.064       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.057       0.033       0.008       0.050       1.388       
+user        0.006       0.002       0.000       0.005       0.029       
+sys         0.005       0.003       0.000       0.005       0.156       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.057       0.034       0.007       0.050       1.611       
+user        0.006       0.002       0.000       0.005       0.027       
+sys         0.005       0.002       0.000       0.005       0.054       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.057       0.033       0.007       0.050       1.375       
+user        0.005       0.002       0.001       0.005       0.024       
+sys         0.005       0.004       0.000       0.005       0.320       
+raft_1
+raft_2
+raft_3
+raft_4
+raft_5
+<<< N_THREADS= 15
+>>> N_THREADS= 16
+>>> Running raft containers
+c6e40f3926f76a92eccfb233ba0ae48b783fdec55f01886917def402d34c7876
+6ba759da5a5e118351e6f3f3ae4d5e1e84a1de4c66c56f8dd9a419accd6384dc
+0ae75f0d2d61679f17627fd41c8d15568187ecab2a61cf05e7424dcffa5fb4e5
+d4d1101690aeaa4adc7ae38121854eb1d9590f802c6815c628c79d4ecaa412ef
+168299a898b756fbb8d6a130a04e3b22c224144bf372e252eb0a07ffb22f0671
+>>> Starting raft servers
+>>> Connecting servers
+--- rpc(172.18.0.11:21001/init, {})
+{"Ok":null}
+
+--- rpc(172.18.0.11:21001/add-learner, [2, "172.18.0.12:21001"])
+{"Ok":{"matched":{"leader_id":{"term":1,"node_id":1},"index":2}}}
+
+--- rpc(172.18.0.11:21001/add-learner, [3, "172.18.0.13:21001"])
+{"Ok":{"matched":{"leader_id":{"term":1,"node_id":1},"index":3}}}
+
+--- rpc(172.18.0.11:21001/add-learner, [4, "172.18.0.14:21001"])
+{"Ok":{"matched":{"leader_id":{"term":1,"node_id":1},"index":4}}}
+
+--- rpc(172.18.0.11:21001/add-learner, [5, "172.18.0.15:21001"])
+{"Ok":{"matched":{"leader_id":{"term":1,"node_id":1},"index":5}}}
+
+--- rpc(172.18.0.11:21001/change-membership, [1, 2, 3, 4, 5])
+{"Ok":{"log_id":{"leader_id":{"term":1,"node_id":1},"index":7},"data":{"value":null},"membership":{"configs":[[1,2,3,4,5]],"nodes":{"1":{"addr":"172.18.0.11:21001","data":{}},"2":{"addr":"172.18.0.12:21001","data":{}},"3":{"addr":"172.18.0.13:21001","data":{}},"4":{"addr":"172.18.0.14:21001","data":{}},"5":{"addr":"172.18.0.15:21001","data":{}}}}}}
+
+--- rpc(172.18.0.11:21001/metrics, )
+{"Ok":{"running_state":{"Ok":null},"id":1,"state":"Leader","current_term":1,"last_log_index":7,"last_applied":{"leader_id":{"term":1,"node_id":1},"index":7},"current_leader":1,"membership_config":{"log_id":{"leader_id":{"term":1,"node_id":1},"index":7},"membership":{"configs":[[1,2,3,4,5]],"nodes":{"1":{"addr":"172.18.0.11:21001","data":{}},"2":{"addr":"172.18.0.12:21001","data":{}},"3":{"addr":"172.18.0.13:21001","data":{}},"4":{"addr":"172.18.0.14:21001","data":{}},"5":{"addr":"172.18.0.15:21001","data":{}}}},"all_members":[1,2,3,4,5]},"snapshot":null,"leader_metrics":{"version":18,"data":{"replication":{"2":{"matched_leader_id":{"term":1,"node_id":1},"matched_index":7},"3":{"matched_leader_id":{"term":1,"node_id":1},"matched_index":7},"4":{"matched_leader_id":{"term":1,"node_id":1},"matched_index":7},"5":{"matched_leader_id":{"term":1,"node_id":1},"matched_index":7}}}}}}
+
+Waiting for workload completion...
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.059       0.023       0.012       0.053       0.252       
+user        0.005       0.001       0.001       0.005       0.018       
+sys         0.005       0.002       0.000       0.005       0.032       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.059       0.022       0.009       0.053       0.227       
+user        0.005       0.001       0.001       0.005       0.022       
+sys         0.005       0.002       0.000       0.005       0.031       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.059       0.023       0.011       0.053       0.306       
+user        0.005       0.001       0.000       0.005       0.016       
+sys         0.005       0.002       0.000       0.005       0.037       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.059       0.023       0.010       0.053       0.380       
+user        0.005       0.001       0.001       0.005       0.020       
+sys         0.005       0.002       0.000       0.005       0.027       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.059       0.023       0.011       0.054       0.268       
+user        0.005       0.002       0.001       0.005       0.023       
+sys         0.005       0.002       0.000       0.005       0.029       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.059       0.023       0.012       0.054       0.277       
+user        0.005       0.002       0.000       0.005       0.036       
+sys         0.005       0.002       0.000       0.005       0.034       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.059       0.023       0.009       0.054       0.319       
+user        0.005       0.001       0.001       0.005       0.021       
+sys         0.005       0.002       0.000       0.005       0.027       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.059       0.023       0.011       0.054       0.245       
+user        0.005       0.002       0.001       0.005       0.022       
+sys         0.005       0.002       0.000       0.005       0.027       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.059       0.023       0.010       0.054       0.239       
+user        0.005       0.001       0.000       0.005       0.020       
+sys         0.005       0.002       0.000       0.005       0.025       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.059       0.023       0.010       0.054       0.291       
+user        0.005       0.001       0.001       0.005       0.022       
+sys         0.005       0.002       0.000       0.005       0.027       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.059       0.023       0.011       0.054       0.253       
+user        0.005       0.001       0.001       0.005       0.022       
+sys         0.005       0.002       0.000       0.005       0.023       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.059       0.023       0.009       0.054       0.429       
+user        0.005       0.001       0.001       0.005       0.017       
+sys         0.005       0.002       0.000       0.005       0.032       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.059       0.023       0.010       0.054       0.229       
+user        0.005       0.001       0.001       0.005       0.025       
+sys         0.005       0.002       0.000       0.005       0.029       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.059       0.023       0.008       0.054       0.271       
+user        0.005       0.001       0.000       0.005       0.019       
+sys         0.005       0.002       0.000       0.005       0.031       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.059       0.023       0.008       0.054       0.293       
+user        0.005       0.001       0.000       0.005       0.022       
+sys         0.005       0.002       0.000       0.005       0.024       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.059       0.023       0.007       0.054       0.281       
+user        0.005       0.002       0.001       0.005       0.030       
+sys         0.005       0.002       0.000       0.005       0.024       
+raft_1
+raft_2
+raft_3
+raft_4
+raft_5
+<<< N_THREADS= 16
+>>> N_THREADS= 17
+>>> Running raft containers
+87128100a8e9d27a44b9c9a1be3d4934be1ea8cad1c32d3e37ab1aff76e3f305
+da013f866f707683c0d20105520cfa80259c391b3ba4fc401ea9f0df8b19a6c0
+85146bc82dd5fd6f4b4b3896b39f436f4c1da6685638f357fff30b10e3d81692
+c84416691a502fdc10035a481947fb7c6368ca0ac0647ce01e9d431de909483e
+c9638f611ad8ccd274e0e3aa456bee9c3f024815a1a128bed56ff178dd91fd8b
+>>> Starting raft servers
+>>> Connecting servers
+--- rpc(172.18.0.11:21001/init, {})
+{"Ok":null}
+
+--- rpc(172.18.0.11:21001/add-learner, [2, "172.18.0.12:21001"])
+{"Ok":{"matched":{"leader_id":{"term":1,"node_id":1},"index":2}}}
+
+--- rpc(172.18.0.11:21001/add-learner, [3, "172.18.0.13:21001"])
+{"Ok":{"matched":{"leader_id":{"term":1,"node_id":1},"index":3}}}
+
+--- rpc(172.18.0.11:21001/add-learner, [4, "172.18.0.14:21001"])
+{"Ok":{"matched":{"leader_id":{"term":1,"node_id":1},"index":4}}}
+
+--- rpc(172.18.0.11:21001/add-learner, [5, "172.18.0.15:21001"])
+{"Ok":{"matched":{"leader_id":{"term":1,"node_id":1},"index":5}}}
+
+--- rpc(172.18.0.11:21001/change-membership, [1, 2, 3, 4, 5])
+{"Ok":{"log_id":{"leader_id":{"term":1,"node_id":1},"index":7},"data":{"value":null},"membership":{"configs":[[1,2,3,4,5]],"nodes":{"1":{"addr":"172.18.0.11:21001","data":{}},"2":{"addr":"172.18.0.12:21001","data":{}},"3":{"addr":"172.18.0.13:21001","data":{}},"4":{"addr":"172.18.0.14:21001","data":{}},"5":{"addr":"172.18.0.15:21001","data":{}}}}}}
+
+--- rpc(172.18.0.11:21001/metrics, )
+{"Ok":{"running_state":{"Ok":null},"id":1,"state":"Leader","current_term":1,"last_log_index":7,"last_applied":{"leader_id":{"term":1,"node_id":1},"index":7},"current_leader":1,"membership_config":{"log_id":{"leader_id":{"term":1,"node_id":1},"index":7},"membership":{"configs":[[1,2,3,4,5]],"nodes":{"1":{"addr":"172.18.0.11:21001","data":{}},"2":{"addr":"172.18.0.12:21001","data":{}},"3":{"addr":"172.18.0.13:21001","data":{}},"4":{"addr":"172.18.0.14:21001","data":{}},"5":{"addr":"172.18.0.15:21001","data":{}}}},"all_members":[1,2,3,4,5]},"snapshot":null,"leader_metrics":{"version":18,"data":{"replication":{"2":{"matched_leader_id":{"term":1,"node_id":1},"matched_index":7},"3":{"matched_leader_id":{"term":1,"node_id":1},"matched_index":7},"4":{"matched_leader_id":{"term":1,"node_id":1},"matched_index":7},"5":{"matched_leader_id":{"term":1,"node_id":1},"matched_index":7}}}}}}
+
+Waiting for workload completion...
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.063       0.024       0.011       0.058       0.355       
+user        0.005       0.001       0.001       0.005       0.021       
+sys         0.005       0.002       0.000       0.005       0.027       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.063       0.024       0.010       0.057       0.358       
+user        0.005       0.001       0.001       0.005       0.018       
+sys         0.005       0.002       0.000       0.005       0.034       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.063       0.023       0.009       0.058       0.301       
+user        0.005       0.001       0.000       0.005       0.023       
+sys         0.005       0.002       0.000       0.005       0.042       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.063       0.024       0.010       0.058       0.483       
+user        0.005       0.002       0.001       0.005       0.023       
+sys         0.005       0.002       0.000       0.005       0.038       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.063       0.024       0.012       0.058       0.332       
+user        0.005       0.002       0.000       0.005       0.021       
+sys         0.005       0.002       0.000       0.005       0.038       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.063       0.024       0.010       0.058       0.386       
+user        0.005       0.001       0.001       0.005       0.023       
+sys         0.005       0.002       0.000       0.005       0.030       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.063       0.024       0.011       0.058       0.340       
+user        0.005       0.001       0.001       0.005       0.015       
+sys         0.005       0.002       0.000       0.005       0.029       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.063       0.024       0.009       0.058       0.371       
+user        0.005       0.002       0.001       0.005       0.023       
+sys         0.005       0.002       0.000       0.005       0.029       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.063       0.024       0.010       0.058       0.357       
+user        0.005       0.001       0.001       0.005       0.021       
+sys         0.005       0.002       0.000       0.005       0.028       
+real        0.063       0.024       0.012       0.058       0.374       
+user        0.005       0.002       0.001       0.005       0.019       
+sys         0.005       0.002       0.000       0.005       0.031       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.063       0.024       0.011       0.058       0.364       
+user        0.006       0.002       0.001       0.005       0.020       
+sys         0.005       0.002       0.000       0.005       0.026       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.063       0.024       0.011       0.058       0.286       
+user        0.005       0.001       0.001       0.005       0.022       
+sys         0.005       0.002       0.000       0.005       0.031       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.063       0.023       0.007       0.058       0.363       
+user        0.005       0.001       0.001       0.005       0.022       
+sys         0.005       0.002       0.000       0.005       0.029       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.063       0.024       0.007       0.058       0.335       
+user        0.005       0.002       0.000       0.005       0.025       
+sys         0.005       0.002       0.000       0.005       0.028       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.063       0.024       0.008       0.058       0.335       
+user        0.005       0.001       0.001       0.005       0.020       
+sys         0.005       0.002       0.000       0.005       0.029       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.063       0.024       0.007       0.058       0.479       
+user        0.005       0.001       0.001       0.005       0.018       
+sys         0.005       0.002       0.000       0.005       0.033       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.063       0.024       0.007       0.058       0.411       
+user        0.005       0.002       0.001       0.005       0.019       
+sys         0.005       0.002       0.000       0.005       0.039       
+raft_1
+raft_2
+raft_3
+raft_4
+raft_5
+<<< N_THREADS= 17
+>>> N_THREADS= 18
+>>> Running raft containers
+eb66f519a5beed7cc010d7ff6c1cb5d9649a44e1f5098a9c63cb931ee03b6ed7
+bce614b9bf1d17d026dc58f6ae80ad7cebc19dd0be3235ad0df985444c8e6a5d
+109bcf2e8829ba161414f59736a3828b1f772a40c4a188c3ce5dc15b1f5ff076
+3eee1262a66873117ceada406a223661de4e13fa1387f5aaf10dcfc3348da9f5
+880c17272cd87bd9f633fc1d3ffc7d51ae3b30c776edd524fd6baf8bf1e5938c
+>>> Starting raft servers
+>>> Connecting servers
+--- rpc(172.18.0.11:21001/init, {})
+{"Ok":null}
+
+--- rpc(172.18.0.11:21001/add-learner, [2, "172.18.0.12:21001"])
+{"Ok":{"matched":{"leader_id":{"term":1,"node_id":1},"index":2}}}
+
+--- rpc(172.18.0.11:21001/add-learner, [3, "172.18.0.13:21001"])
+{"Ok":{"matched":{"leader_id":{"term":1,"node_id":1},"index":3}}}
+
+--- rpc(172.18.0.11:21001/add-learner, [4, "172.18.0.14:21001"])
+{"Ok":{"matched":{"leader_id":{"term":1,"node_id":1},"index":4}}}
+
+--- rpc(172.18.0.11:21001/add-learner, [5, "172.18.0.15:21001"])
+{"Ok":{"matched":{"leader_id":{"term":1,"node_id":1},"index":5}}}
+
+--- rpc(172.18.0.11:21001/change-membership, [1, 2, 3, 4, 5])
+{"Ok":{"log_id":{"leader_id":{"term":1,"node_id":1},"index":7},"data":{"value":null},"membership":{"configs":[[1,2,3,4,5]],"nodes":{"1":{"addr":"172.18.0.11:21001","data":{}},"2":{"addr":"172.18.0.12:21001","data":{}},"3":{"addr":"172.18.0.13:21001","data":{}},"4":{"addr":"172.18.0.14:21001","data":{}},"5":{"addr":"172.18.0.15:21001","data":{}}}}}}
+
+--- rpc(172.18.0.11:21001/metrics, )
+{"Ok":{"running_state":{"Ok":null},"id":1,"state":"Leader","current_term":1,"last_log_index":7,"last_applied":{"leader_id":{"term":1,"node_id":1},"index":7},"current_leader":1,"membership_config":{"log_id":{"leader_id":{"term":1,"node_id":1},"index":7},"membership":{"configs":[[1,2,3,4,5]],"nodes":{"1":{"addr":"172.18.0.11:21001","data":{}},"2":{"addr":"172.18.0.12:21001","data":{}},"3":{"addr":"172.18.0.13:21001","data":{}},"4":{"addr":"172.18.0.14:21001","data":{}},"5":{"addr":"172.18.0.15:21001","data":{}}}},"all_members":[1,2,3,4,5]},"snapshot":null,"leader_metrics":{"version":16,"data":{"replication":{"2":{"matched_leader_id":{"term":1,"node_id":1},"matched_index":7},"3":{"matched_leader_id":{"term":1,"node_id":1},"matched_index":6},"4":{"matched_leader_id":{"term":1,"node_id":1},"matched_index":6},"5":{"matched_leader_id":{"term":1,"node_id":1},"matched_index":7}}}}}}
+
+Waiting for workload completion...
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.067       0.025       0.013       0.062       0.703       
+user        0.006       0.002       0.000       0.005       0.026       
+sys         0.005       0.002       0.000       0.005       0.026       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.068       0.025       0.014       0.062       0.381       
+user        0.006       0.001       0.001       0.005       0.019       
+sys         0.005       0.002       0.000       0.005       0.027       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.068       0.026       0.009       0.062       0.581       
+user        0.006       0.002       0.001       0.005       0.021       
+sys         0.005       0.002       0.000       0.005       0.023       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.068       0.026       0.013       0.062       0.484       
+user        0.006       0.002       0.001       0.005       0.024       
+sys         0.005       0.002       0.000       0.005       0.039       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.068       0.026       0.010       0.062       0.532       
+user        0.006       0.002       0.001       0.005       0.023       
+sys         0.005       0.002       0.000       0.005       0.030       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.068       0.025       0.011       0.062       0.440       
+user        0.006       0.002       0.000       0.005       0.022       
+sys         0.005       0.002       0.000       0.005       0.028       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.068       0.025       0.012       0.062       0.603       
+user        0.006       0.002       0.001       0.005       0.026       
+sys         0.005       0.002       0.000       0.005       0.030       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.068       0.025       0.012       0.062       0.587       
+user        0.006       0.001       0.000       0.005       0.018       
+sys         0.005       0.002       0.000       0.005       0.038       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.068       0.026       0.009       0.062       0.686       
+user        0.006       0.002       0.001       0.005       0.022       
+sys         0.005       0.002       0.000       0.005       0.035       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.068       0.026       0.008       0.062       0.552       
+user        0.006       0.002       0.000       0.005       0.019       
+sys         0.005       0.002       0.000       0.005       0.032       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.068       0.025       0.011       0.062       0.532       
+user        0.006       0.002       0.001       0.005       0.022       
+sys         0.005       0.002       0.000       0.005       0.037       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.068       0.025       0.010       0.062       0.506       
+user        0.006       0.002       0.000       0.005       0.018       
+sys         0.005       0.002       0.000       0.005       0.031       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.068       0.026       0.009       0.062       0.688       
+user        0.006       0.002       0.001       0.005       0.019       
+sys         0.005       0.002       0.000       0.005       0.029       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.068       0.025       0.008       0.062       0.448       
+user        0.006       0.002       0.001       0.005       0.024       
+sys         0.005       0.002       0.000       0.005       0.032       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.068       0.026       0.008       0.062       0.436       
+user        0.005       0.002       0.001       0.005       0.023       
+sys         0.005       0.002       0.000       0.005       0.036       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.068       0.026       0.008       0.062       0.522       
+user        0.006       0.001       0.001       0.005       0.018       
+sys         0.005       0.002       0.000       0.005       0.029       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.068       0.026       0.007       0.062       0.514       
+user        0.006       0.002       0.001       0.005       0.019       
+sys         0.005       0.002       0.000       0.005       0.026       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.068       0.026       0.007       0.062       0.557       
+user        0.006       0.002       0.001       0.005       0.022       
+sys         0.005       0.002       0.000       0.005       0.030       
+raft_1
+raft_2
+raft_3
+raft_4
+raft_5
+<<< N_THREADS= 18
+>>> N_THREADS= 19
+>>> Running raft containers
+981c951d463a44f383f7175d56dcd142f471d96536025fd562548a69c1445330
+e4a84d891d8f525dd665ed612d021f8d220cc4144e87463392a38651c35f6079
+80fd64ceebd1692ef01edc3e0f2415300f7eddc61bde01b0d9ec67bf21414996
+074cd272d434956d9565e0d9821b64968d19f1d9a0a767742441e97c3b5e084a
+c0b9e7d21443893096233c6909c93dcc5870967bb7eef5358efdcd3f501fda78
+>>> Starting raft servers
+>>> Connecting servers
+--- rpc(172.18.0.11:21001/init, {})
+{"Ok":null}
+
+--- rpc(172.18.0.11:21001/add-learner, [2, "172.18.0.12:21001"])
+{"Ok":{"matched":{"leader_id":{"term":1,"node_id":1},"index":2}}}
+
+--- rpc(172.18.0.11:21001/add-learner, [3, "172.18.0.13:21001"])
+{"Ok":{"matched":{"leader_id":{"term":1,"node_id":1},"index":3}}}
+
+--- rpc(172.18.0.11:21001/add-learner, [4, "172.18.0.14:21001"])
+{"Ok":{"matched":{"leader_id":{"term":1,"node_id":1},"index":4}}}
+
+--- rpc(172.18.0.11:21001/add-learner, [5, "172.18.0.15:21001"])
+{"Ok":{"matched":{"leader_id":{"term":1,"node_id":1},"index":5}}}
+
+--- rpc(172.18.0.11:21001/change-membership, [1, 2, 3, 4, 5])
+{"Ok":{"log_id":{"leader_id":{"term":1,"node_id":1},"index":7},"data":{"value":null},"membership":{"configs":[[1,2,3,4,5]],"nodes":{"1":{"addr":"172.18.0.11:21001","data":{}},"2":{"addr":"172.18.0.12:21001","data":{}},"3":{"addr":"172.18.0.13:21001","data":{}},"4":{"addr":"172.18.0.14:21001","data":{}},"5":{"addr":"172.18.0.15:21001","data":{}}}}}}
+
+--- rpc(172.18.0.11:21001/metrics, )
+{"Ok":{"running_state":{"Ok":null},"id":1,"state":"Leader","current_term":1,"last_log_index":7,"last_applied":{"leader_id":{"term":1,"node_id":1},"index":7},"current_leader":1,"membership_config":{"log_id":{"leader_id":{"term":1,"node_id":1},"index":7},"membership":{"configs":[[1,2,3,4,5]],"nodes":{"1":{"addr":"172.18.0.11:21001","data":{}},"2":{"addr":"172.18.0.12:21001","data":{}},"3":{"addr":"172.18.0.13:21001","data":{}},"4":{"addr":"172.18.0.14:21001","data":{}},"5":{"addr":"172.18.0.15:21001","data":{}}}},"all_members":[1,2,3,4,5]},"snapshot":null,"leader_metrics":{"version":16,"data":{"replication":{"2":{"matched_leader_id":{"term":1,"node_id":1},"matched_index":6},"3":{"matched_leader_id":{"term":1,"node_id":1},"matched_index":6},"4":{"matched_leader_id":{"term":1,"node_id":1},"matched_index":7},"5":{"matched_leader_id":{"term":1,"node_id":1},"matched_index":7}}}}}}
+
+Waiting for workload completion...
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.071       0.025       0.011       0.066       0.313       
+user        0.006       0.001       0.001       0.005       0.018       
+sys         0.005       0.002       0.000       0.005       0.028       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.071       0.025       0.011       0.066       0.268       
+user        0.006       0.002       0.001       0.005       0.020       
+sys         0.005       0.002       0.000       0.005       0.026       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.071       0.024       0.012       0.066       0.304       
+user        0.006       0.001       0.001       0.005       0.023       
+sys         0.005       0.002       0.000       0.005       0.037       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.071       0.025       0.010       0.066       0.352       
+user        0.006       0.002       0.001       0.005       0.019       
+sys         0.005       0.002       0.000       0.005       0.026       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.071       0.025       0.011       0.066       0.286       
+user        0.006       0.002       0.001       0.005       0.025       
+sys         0.005       0.002       0.000       0.005       0.027       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.071       0.025       0.013       0.066       0.300       
+user        0.006       0.002       0.001       0.005       0.023       
+sys         0.005       0.002       0.000       0.005       0.027       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.071       0.025       0.013       0.066       0.297       
+user        0.006       0.002       0.001       0.005       0.025       
+sys         0.005       0.002       0.000       0.005       0.033       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.071       0.024       0.010       0.066       0.309       
+user        0.006       0.002       0.000       0.005       0.018       
+sys         0.005       0.002       0.000       0.005       0.035       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.071       0.025       0.011       0.066       0.336       
+user        0.006       0.002       0.001       0.005       0.018       
+sys         0.005       0.002       0.000       0.005       0.034       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.071       0.025       0.010       0.066       0.348       
+user        0.006       0.001       0.000       0.005       0.021       
+sys         0.005       0.002       0.000       0.005       0.024       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.071       0.025       0.011       0.066       0.336       
+user        0.006       0.002       0.001       0.005       0.022       
+sys         0.005       0.002       0.000       0.005       0.026       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.071       0.025       0.013       0.066       0.315       
+user        0.006       0.001       0.000       0.005       0.018       
+sys         0.005       0.002       0.000       0.005       0.025       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.071       0.025       0.010       0.066       0.383       
+user        0.006       0.001       0.001       0.005       0.019       
+sys         0.005       0.002       0.000       0.005       0.030       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.071       0.025       0.009       0.066       0.327       
+user        0.006       0.002       0.001       0.005       0.020       
+sys         0.005       0.002       0.000       0.005       0.024       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.071       0.025       0.010       0.066       0.325       
+user        0.006       0.001       0.001       0.005       0.020       
+sys         0.005       0.002       0.000       0.005       0.031       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.071       0.025       0.007       0.066       0.323       
+user        0.006       0.002       0.001       0.005       0.024       
+sys         0.005       0.002       0.000       0.005       0.026       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.071       0.025       0.007       0.066       0.293       
+user        0.006       0.002       0.001       0.006       0.021       
+sys         0.005       0.002       0.000       0.005       0.026       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.072       0.025       0.007       0.066       0.305       
+user        0.006       0.001       0.001       0.006       0.018       
+sys         0.005       0.002       0.000       0.005       0.025       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.072       0.025       0.007       0.066       0.319       
+user        0.006       0.002       0.001       0.005       0.025       
+sys         0.005       0.002       0.000       0.005       0.027       
+raft_1
+raft_2
+raft_3
+raft_4
+raft_5
+<<< N_THREADS= 19
+>>> N_THREADS= 20
+>>> Running raft containers
+4e053d6ba32c4421297ab15f6cf216cfb58953c55da4ef8c86aaf26745be8e5b
+80c0e28aa046b1d67d3b8fbb79db8fe0443d2657d2266a9c360527dbef1fa404
+e4a0c1903abf1b304d6f88cc71206596d6b3cbf58b56777670c9fa43382a5c3c
+faa4b39c2366c30fe06a1417661a56495a4de89e246f5fa2bac48d94b067d3df
+506cefb4ddadcbd79d58674cb58d0af36dd021ca2c0f5f8b0ca96c470995e14d
+>>> Starting raft servers
+>>> Connecting servers
+--- rpc(172.18.0.11:21001/init, {})
+{"Ok":null}
+
+--- rpc(172.18.0.11:21001/add-learner, [2, "172.18.0.12:21001"])
+{"Ok":{"matched":{"leader_id":{"term":1,"node_id":1},"index":2}}}
+
+--- rpc(172.18.0.11:21001/add-learner, [3, "172.18.0.13:21001"])
+{"Ok":{"matched":{"leader_id":{"term":1,"node_id":1},"index":3}}}
+
+--- rpc(172.18.0.11:21001/add-learner, [4, "172.18.0.14:21001"])
+{"Ok":{"matched":{"leader_id":{"term":1,"node_id":1},"index":4}}}
+
+--- rpc(172.18.0.11:21001/add-learner, [5, "172.18.0.15:21001"])
+{"Ok":{"matched":{"leader_id":{"term":1,"node_id":1},"index":5}}}
+
+--- rpc(172.18.0.11:21001/change-membership, [1, 2, 3, 4, 5])
+{"Ok":{"log_id":{"leader_id":{"term":1,"node_id":1},"index":7},"data":{"value":null},"membership":{"configs":[[1,2,3,4,5]],"nodes":{"1":{"addr":"172.18.0.11:21001","data":{}},"2":{"addr":"172.18.0.12:21001","data":{}},"3":{"addr":"172.18.0.13:21001","data":{}},"4":{"addr":"172.18.0.14:21001","data":{}},"5":{"addr":"172.18.0.15:21001","data":{}}}}}}
+
+--- rpc(172.18.0.11:21001/metrics, )
+{"Ok":{"running_state":{"Ok":null},"id":1,"state":"Leader","current_term":1,"last_log_index":7,"last_applied":{"leader_id":{"term":1,"node_id":1},"index":7},"current_leader":1,"membership_config":{"log_id":{"leader_id":{"term":1,"node_id":1},"index":7},"membership":{"configs":[[1,2,3,4,5]],"nodes":{"1":{"addr":"172.18.0.11:21001","data":{}},"2":{"addr":"172.18.0.12:21001","data":{}},"3":{"addr":"172.18.0.13:21001","data":{}},"4":{"addr":"172.18.0.14:21001","data":{}},"5":{"addr":"172.18.0.15:21001","data":{}}}},"all_members":[1,2,3,4,5]},"snapshot":null,"leader_metrics":{"version":16,"data":{"replication":{"2":{"matched_leader_id":{"term":1,"node_id":1},"matched_index":7},"3":{"matched_leader_id":{"term":1,"node_id":1},"matched_index":6},"4":{"matched_leader_id":{"term":1,"node_id":1},"matched_index":7},"5":{"matched_leader_id":{"term":1,"node_id":1},"matched_index":6}}}}}}
+
+Waiting for workload completion...
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.076       0.027       0.010       0.070       0.307       
+user        0.006       0.002       0.001       0.005       0.021       
+sys         0.005       0.002       0.000       0.005       0.039       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.077       0.029       0.012       0.070       0.395       
+user        0.006       0.002       0.001       0.006       0.023       
+sys         0.005       0.002       0.000       0.005       0.024       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.077       0.029       0.012       0.071       0.445       
+user        0.006       0.001       0.001       0.006       0.019       
+sys         0.005       0.002       0.000       0.005       0.024       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.077       0.028       0.011       0.071       0.410       
+user        0.006       0.002       0.001       0.006       0.025       
+sys         0.005       0.002       0.000       0.005       0.032       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.077       0.030       0.009       0.070       0.472       
+user        0.006       0.002       0.001       0.006       0.016       
+sys         0.005       0.002       0.000       0.005       0.023       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.077       0.030       0.009       0.071       0.443       
+user        0.006       0.001       0.001       0.006       0.020       
+sys         0.005       0.002       0.000       0.005       0.029       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.077       0.030       0.011       0.070       0.427       
+user        0.006       0.001       0.001       0.005       0.020       
+sys         0.005       0.002       0.000       0.005       0.025       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.077       0.030       0.013       0.071       0.388       
+user        0.006       0.001       0.001       0.006       0.017       
+sys         0.005       0.002       0.000       0.005       0.033       
+real        0.077       0.030       0.013       0.071       0.419       
+user        0.006       0.002       0.001       0.006       0.018       
+sys         0.005       0.002       0.000       0.005       0.023       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.077       0.030       0.010       0.071       0.479       
+user        0.006       0.002       0.001       0.006       0.022       
+sys         0.005       0.002       0.000       0.005       0.026       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.078       0.030       0.012       0.071       0.387       
+user        0.006       0.002       0.001       0.006       0.029       
+sys         0.005       0.002       0.000       0.005       0.025       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.078       0.029       0.011       0.071       0.365       
+user        0.006       0.001       0.001       0.006       0.017       
+sys         0.005       0.002       0.000       0.005       0.030       
+real        0.078       0.030       0.014       0.071       0.386       
+user        0.006       0.002       0.000       0.006       0.018       
+sys         0.005       0.002       0.000       0.005       0.027       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.078       0.029       0.013       0.071       0.358       
+user        0.006       0.002       0.001       0.006       0.019       
+sys         0.005       0.002       0.000       0.005       0.022       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.078       0.030       0.014       0.071       0.483       
+user        0.006       0.002       0.001       0.005       0.020       
+sys         0.005       0.002       0.000       0.005       0.028       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.078       0.030       0.013       0.071       0.487       
+user        0.006       0.002       0.001       0.006       0.019       
+sys         0.005       0.002       0.000       0.005       0.023       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.078       0.031       0.010       0.071       0.472       
+user        0.006       0.002       0.000       0.005       0.016       
+sys         0.005       0.002       0.000       0.005       0.029       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.078       0.030       0.009       0.071       0.379       
+user        0.006       0.002       0.001       0.005       0.019       
+sys         0.005       0.002       0.000       0.005       0.030       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.078       0.030       0.012       0.071       0.507       
+user        0.006       0.002       0.001       0.006       0.020       
+sys         0.005       0.002       0.000       0.005       0.030       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.078       0.031       0.009       0.071       0.422       
+user        0.006       0.001       0.001       0.005       0.015       
+sys         0.005       0.002       0.000       0.005       0.026       
+raft_1
+raft_2
+raft_3
+raft_4
+raft_5
+<<< N_THREADS= 20
+>>> N_THREADS= 21
+>>> Running raft containers
+c05248487cba66ac591d4970742f9b28f629e55eb915c1a35c55a4fe0f2b4fda
+6f017ea5e7df5800875ecc078304520580e776c015a0375efd4277fbbca0d8eb
+f98547d863e9e7a109827e549c6f2b720474743c5f3aae69c562e6f2cb422bad
+39af5c4b8e1bc7f5c2a6b82bec61a00349a000d0667242c9a2094cba1224a191
+a81c429740a367ee35400b1f10525fb52cfa34b833896ba941cebaa8a3d61833
+>>> Starting raft servers
+>>> Connecting servers
+--- rpc(172.18.0.11:21001/init, {})
+{"Ok":null}
+
+--- rpc(172.18.0.11:21001/add-learner, [2, "172.18.0.12:21001"])
+{"Ok":{"matched":{"leader_id":{"term":1,"node_id":1},"index":2}}}
+
+--- rpc(172.18.0.11:21001/add-learner, [3, "172.18.0.13:21001"])
+{"Ok":{"matched":{"leader_id":{"term":1,"node_id":1},"index":3}}}
+
+--- rpc(172.18.0.11:21001/add-learner, [4, "172.18.0.14:21001"])
+{"Ok":{"matched":{"leader_id":{"term":1,"node_id":1},"index":4}}}
+
+--- rpc(172.18.0.11:21001/add-learner, [5, "172.18.0.15:21001"])
+{"Ok":{"matched":{"leader_id":{"term":1,"node_id":1},"index":5}}}
+
+--- rpc(172.18.0.11:21001/change-membership, [1, 2, 3, 4, 5])
+{"Ok":{"log_id":{"leader_id":{"term":1,"node_id":1},"index":7},"data":{"value":null},"membership":{"configs":[[1,2,3,4,5]],"nodes":{"1":{"addr":"172.18.0.11:21001","data":{}},"2":{"addr":"172.18.0.12:21001","data":{}},"3":{"addr":"172.18.0.13:21001","data":{}},"4":{"addr":"172.18.0.14:21001","data":{}},"5":{"addr":"172.18.0.15:21001","data":{}}}}}}
+
+--- rpc(172.18.0.11:21001/metrics, )
+{"Ok":{"running_state":{"Ok":null},"id":1,"state":"Leader","current_term":1,"last_log_index":7,"last_applied":{"leader_id":{"term":1,"node_id":1},"index":7},"current_leader":1,"membership_config":{"log_id":{"leader_id":{"term":1,"node_id":1},"index":7},"membership":{"configs":[[1,2,3,4,5]],"nodes":{"1":{"addr":"172.18.0.11:21001","data":{}},"2":{"addr":"172.18.0.12:21001","data":{}},"3":{"addr":"172.18.0.13:21001","data":{}},"4":{"addr":"172.18.0.14:21001","data":{}},"5":{"addr":"172.18.0.15:21001","data":{}}}},"all_members":[1,2,3,4,5]},"snapshot":null,"leader_metrics":{"version":16,"data":{"replication":{"2":{"matched_leader_id":{"term":1,"node_id":1},"matched_index":7},"3":{"matched_leader_id":{"term":1,"node_id":1},"matched_index":6},"4":{"matched_leader_id":{"term":1,"node_id":1},"matched_index":6},"5":{"matched_leader_id":{"term":1,"node_id":1},"matched_index":7}}}}}}
+
+Waiting for workload completion...
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.080       0.026       0.011       0.075       0.374       
+user        0.006       0.002       0.000       0.005       0.020       
+sys         0.005       0.002       0.000       0.005       0.034       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.080       0.026       0.010       0.075       0.430       
+user        0.006       0.002       0.001       0.005       0.022       
+sys         0.005       0.002       0.000       0.005       0.027       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.080       0.026       0.013       0.075       0.495       
+user        0.006       0.002       0.001       0.006       0.023       
+sys         0.005       0.002       0.000       0.005       0.027       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.080       0.026       0.013       0.075       0.573       
+user        0.006       0.002       0.001       0.006       0.023       
+sys         0.005       0.002       0.000       0.005       0.048       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.080       0.026       0.011       0.075       0.471       
+user        0.006       0.002       0.001       0.006       0.020       
+sys         0.005       0.002       0.000       0.005       0.031       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.080       0.026       0.010       0.075       0.603       
+user        0.006       0.002       0.000       0.006       0.021       
+sys         0.005       0.002       0.000       0.005       0.035       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.080       0.026       0.013       0.075       0.525       
+user        0.006       0.002       0.001       0.006       0.022       
+sys         0.005       0.002       0.000       0.005       0.035       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.080       0.026       0.012       0.075       0.346       
+user        0.006       0.002       0.001       0.006       0.020       
+sys         0.005       0.002       0.000       0.005       0.032       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.080       0.026       0.013       0.075       0.496       
+user        0.006       0.002       0.000       0.006       0.025       
+sys         0.005       0.002       0.000       0.005       0.034       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.080       0.026       0.014       0.075       0.454       
+user        0.006       0.002       0.001       0.006       0.019       
+sys         0.005       0.002       0.000       0.005       0.035       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.080       0.027       0.011       0.075       0.530       
+user        0.006       0.002       0.001       0.006       0.024       
+sys         0.005       0.002       0.000       0.005       0.033       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.080       0.026       0.011       0.075       0.481       
+user        0.006       0.002       0.001       0.006       0.019       
+sys         0.005       0.002       0.000       0.005       0.027       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.080       0.027       0.011       0.075       0.531       
+user        0.006       0.002       0.001       0.005       0.020       
+sys         0.005       0.002       0.000       0.005       0.029       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.080       0.026       0.011       0.075       0.365       
+user        0.006       0.002       0.000       0.006       0.023       
+sys         0.005       0.002       0.000       0.005       0.033       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.080       0.026       0.009       0.075       0.417       
+user        0.006       0.002       0.001       0.006       0.017       
+sys         0.005       0.002       0.000       0.005       0.029       
+real        0.080       0.026       0.011       0.075       0.455       
+user        0.006       0.002       0.001       0.006       0.019       
+sys         0.005       0.002       0.000       0.005       0.059       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.080       0.026       -0.010      0.075       0.400       
+user        0.006       0.002       0.001       0.006       0.023       
+sys         0.005       0.002       0.000       0.005       0.028       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.080       0.027       0.010       0.075       0.423       
+user        0.006       0.002       0.000       0.006       0.021       
+sys         0.005       0.002       0.000       0.005       0.029       
+===> multitime results
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.080       0.026       0.008       0.075       0.553       
+user        0.006       0.001       0.001       0.006       0.019       
+sys         0.005       0.002       0.000       0.005       0.026       
+real        0.080       0.027       0.008       0.075       0.552       
+user        0.006       0.002       0.000       0.006       0.020       
+sys         0.005       0.002       0.000       0.005       0.023       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.080       0.027       0.007       0.075       0.438       
+user        0.006       0.002       0.001       0.006       0.019       
+sys         0.005       0.002       0.000       0.005       0.031       
+raft_1
+raft_2
+raft_3
+raft_4
+raft_5
+<<< N_THREADS= 21
+>>> N_THREADS= 22
+>>> Running raft containers
+4c074debdc25db0e4a657f0c6136744de5244e93c8ab6fd8cc81ccd23a081001
+f21d8b46b376291caa71ad8309bf4043d320df6a917664e9bfc1d36a3e085d64
+df154de1c68ca3adb4bda3587b0361ffb9217350794fd86f6f966260d173287d
+5bf1cfdb4a27ab5c54ca2ba1616083555fd60d74acd0ca829db404b1021003f0
+582120c2006c51d7c855ac2c20fe2f323e90a3353347763c9266ad97c9dd0d6d
+>>> Starting raft servers
+>>> Connecting servers
+--- rpc(172.18.0.11:21001/init, {})
+{"Ok":null}
+
+--- rpc(172.18.0.11:21001/add-learner, [2, "172.18.0.12:21001"])
+{"Ok":{"matched":{"leader_id":{"term":1,"node_id":1},"index":2}}}
+
+--- rpc(172.18.0.11:21001/add-learner, [3, "172.18.0.13:21001"])
+{"Ok":{"matched":{"leader_id":{"term":1,"node_id":1},"index":3}}}
+
+--- rpc(172.18.0.11:21001/add-learner, [4, "172.18.0.14:21001"])
+{"Ok":{"matched":{"leader_id":{"term":1,"node_id":1},"index":4}}}
+
+--- rpc(172.18.0.11:21001/add-learner, [5, "172.18.0.15:21001"])
+{"Ok":{"matched":{"leader_id":{"term":1,"node_id":1},"index":5}}}
+
+--- rpc(172.18.0.11:21001/change-membership, [1, 2, 3, 4, 5])
+{"Ok":{"log_id":{"leader_id":{"term":1,"node_id":1},"index":7},"data":{"value":null},"membership":{"configs":[[1,2,3,4,5]],"nodes":{"1":{"addr":"172.18.0.11:21001","data":{}},"2":{"addr":"172.18.0.12:21001","data":{}},"3":{"addr":"172.18.0.13:21001","data":{}},"4":{"addr":"172.18.0.14:21001","data":{}},"5":{"addr":"172.18.0.15:21001","data":{}}}}}}
+
+--- rpc(172.18.0.11:21001/metrics, )
+{"Ok":{"running_state":{"Ok":null},"id":1,"state":"Leader","current_term":1,"last_log_index":7,"last_applied":{"leader_id":{"term":1,"node_id":1},"index":7},"current_leader":1,"membership_config":{"log_id":{"leader_id":{"term":1,"node_id":1},"index":7},"membership":{"configs":[[1,2,3,4,5]],"nodes":{"1":{"addr":"172.18.0.11:21001","data":{}},"2":{"addr":"172.18.0.12:21001","data":{}},"3":{"addr":"172.18.0.13:21001","data":{}},"4":{"addr":"172.18.0.14:21001","data":{}},"5":{"addr":"172.18.0.15:21001","data":{}}}},"all_members":[1,2,3,4,5]},"snapshot":null,"leader_metrics":{"version":17,"data":{"replication":{"2":{"matched_leader_id":{"term":1,"node_id":1},"matched_index":7},"3":{"matched_leader_id":{"term":1,"node_id":1},"matched_index":7},"4":{"matched_leader_id":{"term":1,"node_id":1},"matched_index":7},"5":{"matched_leader_id":{"term":1,"node_id":1},"matched_index":6}}}}}}
+
+Waiting for workload completion...
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.084       0.026       0.013       0.079       0.389       
+user        0.006       0.002       0.000       0.006       0.020       
+sys         0.005       0.002       0.000       0.005       0.026       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.084       0.026       0.009       0.079       0.318       
+user        0.006       0.001       0.001       0.006       0.019       
+sys         0.005       0.002       0.000       0.005       0.024       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.084       0.026       0.013       0.079       0.327       
+user        0.006       0.002       0.001       0.006       0.023       
+sys         0.005       0.002       0.000       0.005       0.047       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.084       0.026       0.014       0.079       0.307       
+user        0.006       0.001       0.001       0.006       0.021       
+sys         0.005       0.002       0.000       0.005       0.028       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.084       0.026       0.010       0.079       0.294       
+user        0.006       0.002       0.000       0.006       0.022       
+sys         0.005       0.002       0.000       0.005       0.026       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.084       0.026       0.013       0.079       0.315       
+user        0.006       0.002       0.000       0.005       0.016       
+sys         0.005       0.002       0.000       0.005       0.028       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.084       0.026       0.012       0.079       0.328       
+user        0.006       0.002       0.001       0.006       0.021       
+sys         0.005       0.002       0.000       0.005       0.030       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.084       0.026       0.012       0.079       0.373       
+user        0.006       0.002       0.001       0.006       0.020       
+sys         0.005       0.002       0.000       0.005       0.044       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.084       0.026       0.012       0.079       0.442       
+user        0.006       0.002       0.001       0.005       0.021       
+sys         0.005       0.002       0.000       0.005       0.035       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.084       0.026       0.013       0.079       0.318       
+user        0.006       0.002       0.001       0.005       0.025       
+sys         0.005       0.002       0.000       0.005       0.028       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.084       0.026       0.011       0.079       0.368       
+user        0.006       0.002       0.001       0.006       0.023       
+sys         0.005       0.002       0.000       0.005       0.027       
+===> multitime results
+1: ===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+-q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.084       0.026       0.012       0.079       0.321       
+real        0.084       0.026       0.010       0.079       0.286       
+user        0.006       0.002       0.001       0.005       0.026       
+sys         0.005       0.002       0.000       0.005       0.024       
+user        0.006       0.002       0.001       0.006       0.019       
+sys         0.005       0.002       0.000       0.005       0.026       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.084       0.026       0.010       0.079       0.389       
+user        0.006       0.001       0.001       0.006       0.016       
+sys         0.005       0.002       0.000       0.005       0.040       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.084       0.026       0.011       0.079       0.367       
+user        0.006       0.002       0.000       0.006       0.019       
+sys         0.005       0.002       0.000       0.005       0.031       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.084       0.026       0.009       0.079       0.446       
+user        0.006       0.002       0.001       0.006       0.019       
+sys         0.005       0.002       0.000       0.005       0.021       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.084       0.026       0.011       0.079       0.320       
+user        0.006       0.002       0.001       0.006       0.021       
+sys         0.005       0.002       0.000       0.005       0.027       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.084       0.026       0.008       0.079       0.308       
+user        0.006       0.001       0.001       0.006       0.017       
+sys         0.005       0.002       0.000       0.005       0.023       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.084       0.026       0.007       0.079       0.325       
+user        0.006       0.001       0.001       0.006       0.017       
+sys         0.005       0.002       0.000       0.005       0.031       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.084       0.026       0.013       0.079       0.291       
+user        0.006       0.002       0.001       0.006       0.020       
+sys         0.005       0.002       0.000       0.005       0.027       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.084       0.026       0.007       0.079       0.417       
+user        0.006       0.002       0.001       0.006       0.020       
+sys         0.005       0.002       0.000       0.005       0.032       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.084       0.027       0.007       0.079       0.310       
+user        0.006       0.002       0.001       0.006       0.022       
+sys         0.005       0.002       0.000       0.005       0.025       
+raft_1
+raft_2
+raft_3
+raft_4
+raft_5
+<<< N_THREADS= 22
+>>> N_THREADS= 23
+>>> Running raft containers
+85c994ba6f302872c8dd4cf8eab9da0d60a87c474b51f57a43e3e8846df94771
+121f90bc25bcb4e77b23b5affc1eec1359ce380df654d23c484b479e931e2ff4
+b0cee1bdc1dc5e32348398bc7496a620bbfd0df2bbf6dc0ebaf3d50f351db193
+5b32f0d676c3d36dd1c2ca0e48a2f27b081ca2a7a5dc572efbcf96e2c375e6da
+ac206e3447309d2d55ca2e7f233d9f5504be3e7fc41ad81e3cbaf6c0ed519a36
+>>> Starting raft servers
+>>> Connecting servers
+--- rpc(172.18.0.11:21001/init, {})
+{"Ok":null}
+
+--- rpc(172.18.0.11:21001/add-learner, [2, "172.18.0.12:21001"])
+{"Ok":{"matched":{"leader_id":{"term":1,"node_id":1},"index":2}}}
+
+--- rpc(172.18.0.11:21001/add-learner, [3, "172.18.0.13:21001"])
+{"Ok":{"matched":{"leader_id":{"term":1,"node_id":1},"index":3}}}
+
+--- rpc(172.18.0.11:21001/add-learner, [4, "172.18.0.14:21001"])
+{"Ok":{"matched":{"leader_id":{"term":1,"node_id":1},"index":4}}}
+
+--- rpc(172.18.0.11:21001/add-learner, [5, "172.18.0.15:21001"])
+{"Ok":{"matched":{"leader_id":{"term":1,"node_id":1},"index":5}}}
+
+--- rpc(172.18.0.11:21001/change-membership, [1, 2, 3, 4, 5])
+{"Ok":{"log_id":{"leader_id":{"term":1,"node_id":1},"index":7},"data":{"value":null},"membership":{"configs":[[1,2,3,4,5]],"nodes":{"1":{"addr":"172.18.0.11:21001","data":{}},"2":{"addr":"172.18.0.12:21001","data":{}},"3":{"addr":"172.18.0.13:21001","data":{}},"4":{"addr":"172.18.0.14:21001","data":{}},"5":{"addr":"172.18.0.15:21001","data":{}}}}}}
+
+--- rpc(172.18.0.11:21001/metrics, )
+{"Ok":{"running_state":{"Ok":null},"id":1,"state":"Leader","current_term":1,"last_log_index":7,"last_applied":{"leader_id":{"term":1,"node_id":1},"index":7},"current_leader":1,"membership_config":{"log_id":{"leader_id":{"term":1,"node_id":1},"index":7},"membership":{"configs":[[1,2,3,4,5]],"nodes":{"1":{"addr":"172.18.0.11:21001","data":{}},"2":{"addr":"172.18.0.12:21001","data":{}},"3":{"addr":"172.18.0.13:21001","data":{}},"4":{"addr":"172.18.0.14:21001","data":{}},"5":{"addr":"172.18.0.15:21001","data":{}}}},"all_members":[1,2,3,4,5]},"snapshot":null,"leader_metrics":{"version":16,"data":{"replication":{"2":{"matched_leader_id":{"term":1,"node_id":1},"matched_index":7},"3":{"matched_leader_id":{"term":1,"node_id":1},"matched_index":6},"4":{"matched_leader_id":{"term":1,"node_id":1},"matched_index":7},"5":{"matched_leader_id":{"term":1,"node_id":1},"matched_index":6}}}}}}
+
+Waiting for workload completion...
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.088       0.027       0.014       0.083       0.348       
+user        0.006       0.002       0.000       0.006       0.028       
+sys         0.005       0.002       0.000       0.005       0.042       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.089       0.027       0.015       0.083       0.480       
+user        0.006       0.002       0.001       0.006       0.024       
+sys         0.005       0.002       0.000       0.005       0.029       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.089       0.027       0.013       0.084       0.451       
+user        0.006       0.002       0.001       0.006       0.027       
+sys         0.005       0.002       0.000       0.005       0.037       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.089       0.027       0.012       0.083       0.563       
+user        0.006       0.002       0.001       0.006       0.021       
+sys         0.005       0.002       0.000       0.005       0.024       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.089       0.028       0.010       0.083       0.478       
+user        0.006       0.002       0.000       0.006       0.025       
+sys         0.005       0.002       0.000       0.005       0.024       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.089       0.027       0.013       0.083       0.510       
+user        0.006       0.002       0.000       0.006       0.023       
+sys         0.005       0.002       0.000       0.005       0.026       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.089       0.027       0.009       0.084       0.472       
+user        0.006       0.002       0.001       0.006       0.022       
+sys         0.005       0.002       0.000       0.005       0.040       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.089       0.027       0.013       0.083       0.490       
+user        0.006       0.002       0.001       0.006       0.020       
+sys         0.005       0.002       0.000       0.005       0.024       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.089       0.027       0.011       0.083       0.355       
+user        0.006       0.002       0.001       0.006       0.024       
+sys         0.005       0.002       0.000       0.005       0.026       
+real        0.089       0.027       0.012       0.083       0.417       
+user        0.006       0.002       0.001       0.006       0.024       
+sys         0.005       0.002       0.000       0.005       0.055       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.089       0.027       0.012       0.084       0.483       
+user        0.006       0.002       0.000       0.006       0.023       
+sys         0.005       0.002       0.000       0.005       0.024       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.089       0.027       0.012       0.083       0.428       
+user        0.006       0.002       0.001       0.006       0.022       
+sys         0.005       0.002       0.000       0.005       0.037       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.089       0.028       0.014       0.084       0.571       
+user        0.006       0.002       0.001       0.006       0.018       
+sys         0.005       0.002       0.000       0.005       0.032       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.089       0.027       0.012       0.084       0.550       
+user        0.006       0.002       0.001       0.006       0.018       
+sys         0.005       0.002       0.000       0.005       0.024       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.089       0.028       0.012       0.083       0.443       
+user        0.006       0.002       0.000       0.006       0.018       
+sys         0.005       0.002       0.000       0.005       0.039       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.089       0.028       0.008       0.083       0.484       
+user        0.006       0.002       0.001       0.006       0.022       
+sys         0.005       0.002       0.000       0.005       0.026       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.089       0.028       0.013       0.084       0.512       
+user        0.006       0.002       0.001       0.006       0.023       
+sys         0.005       0.002       0.000       0.005       0.024       
+real        0.089       0.028       0.011       0.084       0.474       
+user        0.006       0.002       0.001       0.006       0.028       
+sys         0.005       0.002       0.000       0.005       0.040       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.089       0.027       0.009       0.084       0.383       
+user        0.006       0.002       0.001       0.006       0.022       
+sys         0.005       0.002       0.000       0.005       0.028       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.089       0.028       0.011       0.084       0.479       
+user        0.006       0.002       0.000       0.006       0.024       
+sys         0.005       0.002       0.000       0.005       0.026       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.089       0.028       0.007       0.084       0.458       
+user        0.006       0.002       0.001       0.006       0.027       
+sys         0.005       0.002       0.000       0.005       0.023       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.089       0.028       0.008       0.084       0.389       
+user        0.006       0.002       0.000       0.006       0.025       
+sys         0.005       0.002       0.000       0.005       0.038       
+===> multitime results
+1: -q bash single_write.sh
+            Mean        Std.Dev.    Min         Median      Max
+real        0.089       0.028       0.007       0.084       0.418       
+user        0.006       0.002       0.001       0.006       0.018       
+sys         0.005       0.002       0.000       0.005       0.034       
+raft_1
+raft_2
+raft_3
+raft_4
+raft_5
+<<< N_THREADS= 23
+>>> N_THREADS= 24
+>>> Running raft containers
+8b7901f741fec23d7dea2aec771c3e310dce141bec2b0e9f5c12bcb468676867
+3b7cf57c6e6c97cd00bf6e15b71e21a4f42ce4f6a87669dcb582d8386e9d8fc0
+75513eb3d965b73ff5cb7526bc27ccfe2dbeee0a44e5b9e33a0e434d173eb8e9
+c40459c47f999e570f40076b6835b1afb81a6d8066760f03021b28542cef0ffe
+36ad19d42b6c39a44a09c1aec66080fcaaa013d613c68e1c99155c7869dd6718
+>>> Starting raft servers
+>>> Connecting servers
+--- rpc(172.18.0.11:21001/init, {})
+{"Ok":null}
+
+--- rpc(172.18.0.11:21001/add-learner, [2, "172.18.0.12:21001"])
+{"Ok":{"matched":{"leader_id":{"term":1,"node_id":1},"index":2}}}
+
+--- rpc(172.18.0.11:21001/add-learner, [3, "172.18.0.13:21001"])
+{"Ok":{"matched":{"leader_id":{"term":1,"node_id":1},"index":3}}}
+
+--- rpc(172.18.0.11:21001/add-learner, [4, "172.18.0.14:21001"])
+{"Ok":{"matched":{"leader_id":{"term":1,"node_id":1},"index":4}}}
+
+--- rpc(172.18.0.11:21001/add-learner, [5, "172.18.0.15:21001"])
+{"Ok":{"matched":{"leader_id":{"term":1,"node_id":1},"index":5}}}
+
+--- rpc(172.18.0.11:21001/change-membership, [1, 2, 3, 4, 5])
+{"Ok":{"log_id":{"leader_id":{"term":1,"node_id":1},"index":7},"data":{"value":null},"membership":{"configs":[[1,2,3,4,5]],"nodes":{"1":{"addr":"172.18.0.11:21001","data":{}},"2":{"addr":"172.18.0.12:21001","data":{}},"3":{"addr":"172.18.0.13:21001","data":{}},"4":{"addr":"172.18.0.14:21001","data":{}},"5":{"addr":"172.18.0.15:21001","data":{}}}}}}
+
+--- rpc(172.18.0.11:21001/metrics, )
+{"Ok":{"running_state":{"Ok":null},"id":1,"state":"Leader","current_term":1,"last_log_index":7,"last_applied":{"leader_id":{"term":1,"node_id":1},"index":7},"current_leader":1,"membership_config":{"log_id":{"leader_id":{"term":1,"node_id":1},"index":7},"membership":{"configs":[[1,2,3,4,5]],"nodes":{"1":{"addr":"172.18.0.11:21001","data":{}},"2":{"addr":"172.18.0.12:21001","data":{}},"3":{"addr":"172.18.0.13:21001","data":{}},"4":{"addr":"172.18.0.14:21001","data":{}},"5":{"addr":"172.18.0.15:21001","data":{}}}},"all_members":[1,2,3,4,5]},"snapshot":null,"leader_metrics":{"version":16,"data":{"replication":{"2":{"matched_leader_id":{"term":1,"node_id":1},"matched_index":7},"3":{"matched_leader_id":{"term":1,"node_id":1},"matched_index":6},"4":{"matched_leader_id":{"term":1,"node_id":1},"matched_index":6},"5":{"matched_leader_id":{"term":1,"node_id":1},"matched_index":7}}}}}}
+
+Waiting for workload completion...
