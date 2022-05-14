@@ -266,7 +266,7 @@ impl<C: RaftTypeConfig, N: RaftNetworkFactory<C>, S: RaftStorage<C>> RaftCore<C,
     }
 
     /// The main loop of the Raft protocol.
-    #[tracing::instrument(level="trace", skip(self), fields(id=display(self.id), cluster=%self.config.cluster_name))]
+    #[tracing::instrument(level="trace",  err,skip(self), fields(id=display(self.id), cluster=%self.config.cluster_name))]
     async fn main(mut self) -> Result<(), Fatal<C>> {
         let res = self.do_main().await;
         match res {
@@ -283,7 +283,7 @@ impl<C: RaftTypeConfig, N: RaftNetworkFactory<C>, S: RaftStorage<C>> RaftCore<C,
         }
     }
 
-    #[tracing::instrument(level="trace", skip(self), fields(id=display(self.id), cluster=%self.config.cluster_name))]
+    #[tracing::instrument(level="trace",  err,skip(self), fields(id=display(self.id), cluster=%self.config.cluster_name))]
     async fn do_main(&mut self) -> Result<(), Fatal<C>> {
         tracing::debug!("raft node is initializing");
 
@@ -435,7 +435,7 @@ impl<C: RaftTypeConfig, N: RaftNetworkFactory<C>, S: RaftStorage<C>> RaftCore<C,
     }
 
     /// Save the Raft node's current hard state to disk.
-    #[tracing::instrument(level = "trace", skip(self))]
+    #[tracing::instrument(level = "trace", err(Debug), skip(self))]
     async fn save_vote(&mut self) -> Result<(), StorageError<C>> {
         self.storage.save_vote(&self.vote).await
     }
@@ -600,7 +600,7 @@ impl<C: RaftTypeConfig, N: RaftNetworkFactory<C>, S: RaftStorage<C>> RaftCore<C,
         let _ = tx.send(Err(err.into()));
     }
 
-    #[tracing::instrument(level = "debug", skip(self, payload))]
+    #[tracing::instrument(level = "debug", err(Debug), skip(self, payload))]
     pub(super) async fn append_payload_to_log(
         &mut self,
         payload: EntryPayload<C>,
@@ -647,7 +647,7 @@ impl<C: RaftTypeConfig, N: RaftNetworkFactory<C>, S: RaftStorage<C>> RaftCore<C,
     }
 }
 
-#[tracing::instrument(level = "trace", skip(sto), fields(entries=%entries.summary()))]
+#[tracing::instrument(level = "trace", err(Debug), skip(sto), fields(entries=%entries.summary()))]
 async fn apply_to_state_machine<C, S>(
     sto: &mut S,
     entries: &[&Entry<C>],
@@ -671,7 +671,7 @@ where
     }
 }
 
-#[tracing::instrument(level = "trace", skip(sto))]
+#[tracing::instrument(level = "trace", err(Debug), skip(sto))]
 async fn purge_applied_logs<C, S>(
     sto: &mut S,
     last_applied: &LogId<C::NodeId>,
@@ -822,7 +822,7 @@ impl<'a, C: RaftTypeConfig, N: RaftNetworkFactory<C>, S: RaftStorage<C>> LeaderS
     }
 
     /// Transition to the Raft leader state.
-    #[tracing::instrument(level="debug", skip(self), fields(id=display(self.core.id), raft_state="leader"))]
+    #[tracing::instrument(level="debug",  err,skip(self), fields(id=display(self.core.id), raft_state="leader"))]
     pub(self) async fn run(mut self) -> Result<(), Fatal<C>> {
         // Setup state as leader.
         self.core.last_heartbeat = None;
@@ -850,7 +850,7 @@ impl<'a, C: RaftTypeConfig, N: RaftNetworkFactory<C>, S: RaftStorage<C>> LeaderS
         Ok(())
     }
 
-    #[tracing::instrument(level="debug", skip(self), fields(id=display(self.core.id)))]
+    #[tracing::instrument(level="debug",  err,skip(self), fields(id=display(self.core.id)))]
     pub(self) async fn leader_loop(mut self) -> Result<(), Fatal<C>> {
         // report the leader metrics every time there came to a new leader
         // if not `report_metrics` before the leader loop, the leader metrics may not be updated cause no coming event.
@@ -894,7 +894,7 @@ impl<'a, C: RaftTypeConfig, N: RaftNetworkFactory<C>, S: RaftStorage<C>> LeaderS
         }
     }
 
-    #[tracing::instrument(level = "debug", skip(self, msg), fields(state = "leader", id=display(self.core.id)))]
+    #[tracing::instrument(level = "debug", err(Debug), skip(self, msg), fields(state = "leader", id=display(self.core.id)))]
     pub async fn handle_msg(&mut self, msg: RaftMsg<C, N, S>) -> Result<(), Fatal<C>> {
         tracing::debug!("recv from rx_api: {}", msg.summary());
 
@@ -1004,7 +1004,7 @@ impl<'a, C: RaftTypeConfig, N: RaftNetworkFactory<C>, S: RaftStorage<C>> Candida
     }
 
     /// Run the candidate loop.
-    #[tracing::instrument(level="debug", skip(self), fields(id=display(self.core.id), raft_state="candidate"))]
+    #[tracing::instrument(level="debug",  err,skip(self), fields(id=display(self.core.id), raft_state="candidate"))]
     pub(self) async fn run(self) -> Result<(), Fatal<C>> {
         // Each iteration of the outer loop represents a new term.
         self.candidate_loop().await?;
@@ -1077,7 +1077,7 @@ impl<'a, C: RaftTypeConfig, N: RaftNetworkFactory<C>, S: RaftStorage<C>> Candida
         }
     }
 
-    #[tracing::instrument(level = "debug", skip(self, msg), fields(state = "candidate", id=display(self.core.id)))]
+    #[tracing::instrument(level = "debug", err(Debug), skip(self, msg), fields(state = "candidate", id=display(self.core.id)))]
     pub async fn handle_msg(&mut self, msg: RaftMsg<C, N, S>) -> Result<(), Fatal<C>> {
         tracing::debug!("recv from rx_api: {}", msg.summary());
         match msg {
@@ -1132,13 +1132,13 @@ impl<'a, C: RaftTypeConfig, N: RaftNetworkFactory<C>, S: RaftStorage<C>> Followe
     }
 
     /// Run the follower loop.
-    #[tracing::instrument(level="debug", skip(self), fields(id=display(self.core.id), raft_state="follower"))]
+    #[tracing::instrument(level="debug",  err,skip(self), fields(id=display(self.core.id), raft_state="follower"))]
     pub(self) async fn run(self) -> Result<(), Fatal<C>> {
         self.follower_loop().await?;
         Ok(())
     }
 
-    #[tracing::instrument(level="debug", skip(self), fields(id=display(self.core.id), raft_state="follower"))]
+    #[tracing::instrument(level="debug",  err,skip(self), fields(id=display(self.core.id), raft_state="follower"))]
     pub(self) async fn follower_loop(mut self) -> Result<(), Fatal<C>> {
         // report the new state before enter the loop
         self.core.report_metrics(Update::Update(None));
@@ -1171,7 +1171,7 @@ impl<'a, C: RaftTypeConfig, N: RaftNetworkFactory<C>, S: RaftStorage<C>> Followe
         }
     }
 
-    #[tracing::instrument(level = "debug", skip(self, msg), fields(state = "follower", id=display(self.core.id)))]
+    #[tracing::instrument(level = "debug", err(Debug), skip(self, msg), fields(state = "follower", id=display(self.core.id)))]
     pub(crate) async fn handle_msg(&mut self, msg: RaftMsg<C, N, S>) -> Result<(), Fatal<C>> {
         tracing::debug!("recv from rx_api: {}", msg.summary());
 
@@ -1227,7 +1227,7 @@ impl<'a, C: RaftTypeConfig, N: RaftNetworkFactory<C>, S: RaftStorage<C>> Learner
     }
 
     /// Run the learner loop.
-    #[tracing::instrument(level="debug", skip(self), fields(id=display(self.core.id), raft_state="learner"))]
+    #[tracing::instrument(level="debug",  err,skip(self), fields(id=display(self.core.id), raft_state="learner"))]
     pub(self) async fn run(self) -> Result<(), Fatal<C>> {
         self.learner_loop().await?;
         Ok(())

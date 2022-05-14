@@ -16,6 +16,14 @@ fi
 N_THREADS=10
 echo ">>> N_THREADS= ${N_THREADS}"
 
+# NETWORK=host
+# IP_PREFIX=127.0.0.1:2100
+# IP_CLIENT=127.0.0.1
+
+NETWORK=raftnet
+IP_PREFIX=172.18.0.1
+IP_CLIENT=172.18.0.10
+
 # target nodes
 RAFT_NODES=(
   "leader 1"
@@ -32,8 +40,9 @@ for ((i = 0; i < ${#RAFT_NODES[@]}; i++)) do
   if [[ $1 == "run" ]]
   then
     bash start-cluster.sh
+    # docker container exec -d raft_${raft_id} bash fault_clashing.sh "raft-key-value --id ${raft_id} --http-addr ${IP_PREFIX}${raft_id}"
     docker container exec -d raft_${raft_id} bash fault_clashing.sh "raft-key-value --id ${raft_id} --http-addr 172.18.0.1${raft_id}:21001"
-    docker run --rm --name rclient --net raftnet --ip 172.18.1.10 raft-client bash workload.sh ${N_THREADS}
+    docker run --rm --name rclient --net ${NETWORK} --ip ${IP_CLIENT} raft-client bash workload.sh ${N_THREADS}
     bash stop-cluster.sh
   fi
 done
@@ -58,7 +67,7 @@ for ((i = 0; i < ${#RAFT_NODES[@]}; i++)) do
     then
       bash start-cluster.sh
       docker container exec -d raft_${raft_id} bash fault_slowcpu.sh ${cpu_percent}
-      docker run --rm --name rclient --net raftnet --ip 172.18.1.10 raft-client bash workload.sh ${N_THREADS}
+      docker run --rm --name rclient --net ${NETWORK} --ip ${IP_CLIENT} raft-client bash workload.sh ${N_THREADS}
       bash stop-cluster.sh
     fi
   done
@@ -83,7 +92,7 @@ for ((i = 0; i < ${#RAFT_NODES[@]}; i++)) do
     if [[ $1 == "run" ]]
     then
       bash start-cluster.sh ${raft_name} "--memory ${mem_limit}"
-      docker run --rm --name rclient --net raftnet --ip 172.18.1.10 raft-client bash workload.sh ${N_THREADS}
+      docker run --rm --name rclient --net ${NETWORK} --ip ${IP_CLIENT} raft-client bash workload.sh ${N_THREADS}
       bash stop-cluster.sh
     fi
   done

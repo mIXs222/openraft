@@ -1,5 +1,8 @@
 #!/bin/bash
 
+NUM_NODES=$1
+echo "Connecting ${NUM_NODES} nodes"
+
 parent_path=$( cd "$(dirname "${BASH_SOURCE[0]}")" ; pwd -P )
 source ${parent_path}/utils.sh
 
@@ -15,9 +18,12 @@ IP_PREFIX=172.18.0.11:2100
 # rpc ${IP_PREFIX}1/metrics
 
 rpc 172.18.0.11:21001/init '{}'
-rpc 172.18.0.11:21001/add-learner "[2, \"172.18.0.12:21001\"]"
-rpc 172.18.0.11:21001/add-learner "[3, \"172.18.0.13:21001\"]"
-rpc 172.18.0.11:21001/add-learner "[4, \"172.18.0.14:21001\"]"
-rpc 172.18.0.11:21001/add-learner "[5, \"172.18.0.15:21001\"]"
-rpc 172.18.0.11:21001/change-membership '[1, 2, 3, 4, 5]'
+MEMBERS="[1"
+for ((i = 2; i <= ${NUM_NODES}; i++)) do
+  rpc 172.18.0.11:21001/add-learner "[${i}, \"172.18.0.1${i}:21001\"]"
+  MEMBERS="${MEMBERS}, ${i}"
+done
+MEMBERS="${MEMBERS}]"
+# echo "member list ${MEMBERS}"
+rpc 172.18.0.11:21001/change-membership "${MEMBERS}"
 rpc 172.18.0.11:21001/metrics

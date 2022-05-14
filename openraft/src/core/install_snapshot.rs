@@ -28,7 +28,7 @@ impl<C: RaftTypeConfig, N: RaftNetworkFactory<C>, S: RaftStorage<C>> RaftCore<C,
     /// Leaders always send chunks in order. It is important to note that, according to the Raft spec,
     /// a log may only have one snapshot at any time. As snapshot contents are application specific,
     /// the Raft log will only store a pointer to the snapshot file along with the index & term.
-    #[tracing::instrument(level = "debug", skip(self, req), fields(req=%req.summary()))]
+    #[tracing::instrument(level = "debug", err(Debug), skip(self, req), fields(req=%req.summary()))]
     pub(super) async fn handle_install_snapshot_request(
         &mut self,
         req: InstallSnapshotRequest<C>,
@@ -88,7 +88,7 @@ impl<C: RaftTypeConfig, N: RaftNetworkFactory<C>, S: RaftStorage<C>> RaftCore<C,
         }
     }
 
-    #[tracing::instrument(level = "debug", skip(self, req), fields(req=%req.summary()))]
+    #[tracing::instrument(level = "debug", err(Debug), skip(self, req), fields(req=%req.summary()))]
     async fn begin_installing_snapshot(
         &mut self,
         req: InstallSnapshotRequest<C>,
@@ -131,7 +131,7 @@ impl<C: RaftTypeConfig, N: RaftNetworkFactory<C>, S: RaftStorage<C>> RaftCore<C,
         Ok(InstallSnapshotResponse { vote: self.vote })
     }
 
-    #[tracing::instrument(level = "debug", skip(self, req, snapshot), fields(req=%req.summary()))]
+    #[tracing::instrument(level = "debug", err(Debug), skip(self, req, snapshot), fields(req=%req.summary()))]
     async fn continue_installing_snapshot(
         &mut self,
         req: InstallSnapshotRequest<C>,
@@ -175,7 +175,7 @@ impl<C: RaftTypeConfig, N: RaftNetworkFactory<C>, S: RaftStorage<C>> RaftCore<C,
     /// Finalize the installation of a new snapshot.
     ///
     /// Any errors which come up from this routine will cause the Raft node to go into shutdown.
-    #[tracing::instrument(level = "debug", skip(self, req, snapshot), fields(req=%req.summary()))]
+    #[tracing::instrument(level = "debug", err(Debug), skip(self, req, snapshot), fields(req=%req.summary()))]
     async fn finalize_snapshot_installation(
         &mut self,
         req: InstallSnapshotRequest<C>,

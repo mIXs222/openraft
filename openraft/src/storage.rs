@@ -90,6 +90,7 @@ where C: RaftTypeConfig
     ///
     /// Similar to `try_get_log_entries` except an error will be returned if there is an entry not
     /// found in the specified range.
+    #[tracing::instrument(level = "debug", err(Debug), skip(self))]
     async fn get_log_entries<RB: RangeBounds<u64> + Clone + Debug + Send + Sync>(
         &mut self,
         range: RB,
@@ -104,6 +105,7 @@ where C: RaftTypeConfig
     /// Try to get an log entry.
     ///
     /// It does not return an error if the log entry at `log_index` is not found.
+    #[tracing::instrument(level = "debug", err(Debug), skip(self))]
     async fn try_get_log_entry(&mut self, log_index: u64) -> Result<Option<Entry<C>>, StorageError<C>> {
         let mut res = self.try_get_log_entries(log_index..(log_index + 1)).await?;
         Ok(res.pop())
@@ -209,7 +211,7 @@ where C: RaftTypeConfig
     ///
     /// This method should returns membership with the greatest log index which is `>=since_index`.
     /// If no such membership log is found, it returns `None`, e.g., when logs are cleaned after being applied.
-    #[tracing::instrument(level = "trace", skip(self))]
+    #[tracing::instrument(level = "trace", err(Debug), skip(self))]
     async fn last_membership_in_log(
         &mut self,
         since_index: u64,

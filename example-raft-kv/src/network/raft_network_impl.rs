@@ -23,6 +23,7 @@ use crate::ExampleTypeConfig;
 pub struct ExampleNetwork {}
 
 impl ExampleNetwork {
+    #[tracing::instrument(err(Debug), level = "debug", skip(self))]
     pub async fn send_rpc<Req, Resp, Err>(
         &self,
         target: ExampleNodeId,
@@ -31,7 +32,7 @@ impl ExampleNetwork {
         req: Req,
     ) -> Result<Resp, RPCError<ExampleTypeConfig, Err>>
     where
-        Req: Serialize,
+        Req: Serialize + std::fmt::Debug,
         Err: std::error::Error + DeserializeOwned,
         Resp: DeserializeOwned,
     {
@@ -70,6 +71,7 @@ pub struct ExampleNetworkConnection {
 
 #[async_trait]
 impl RaftNetwork<ExampleTypeConfig> for ExampleNetworkConnection {
+    #[tracing::instrument(level = "debug", err(Debug), skip(self))]
     async fn send_append_entries(
         &mut self,
         req: AppendEntriesRequest<ExampleTypeConfig>,
@@ -80,6 +82,7 @@ impl RaftNetwork<ExampleTypeConfig> for ExampleNetworkConnection {
         self.owner.send_rpc(self.target, self.target_node.as_ref(), "raft-append", req).await
     }
 
+    #[tracing::instrument(level = "debug", err(Debug), skip(self))]
     async fn send_install_snapshot(
         &mut self,
         req: InstallSnapshotRequest<ExampleTypeConfig>,
@@ -90,6 +93,7 @@ impl RaftNetwork<ExampleTypeConfig> for ExampleNetworkConnection {
         self.owner.send_rpc(self.target, self.target_node.as_ref(), "raft-snapshot", req).await
     }
 
+    #[tracing::instrument(level = "debug", err(Debug), skip(self))]
     async fn send_vote(
         &mut self,
         req: VoteRequest<ExampleTypeConfig>,

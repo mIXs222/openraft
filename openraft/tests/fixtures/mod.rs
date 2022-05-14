@@ -372,7 +372,7 @@ where
         Ok(metrics)
     }
 
-    #[tracing::instrument(level = "debug", skip(self))]
+    #[tracing::instrument(level = "debug", err(Debug), skip(self))]
     pub fn get_raft_handle(&self, node_id: &C::NodeId) -> std::result::Result<MemRaft<C, S>, NodeNotFound<C>> {
         let rt = self.routing_table.lock().unwrap();
         let raft_and_sto = rt.get(node_id).ok_or_else(|| NodeNotFound {
@@ -391,7 +391,7 @@ where
     }
 
     /// Wait for metrics until it satisfies some condition.
-    #[tracing::instrument(level = "info", skip(self, func))]
+    #[tracing::instrument(level = "info", err(Debug), skip(self, func))]
     pub async fn wait_for_metrics<T>(
         &self,
         node_id: &C::NodeId,
@@ -417,7 +417,7 @@ where
     }
 
     /// Wait for specified nodes until they applied upto `want_log`(inclusive) logs.
-    #[tracing::instrument(level = "info", skip(self))]
+    #[tracing::instrument(level = "info", err(Debug), skip(self))]
     pub async fn wait_for_log(
         &self,
         node_ids: &BTreeSet<C::NodeId>,
@@ -431,7 +431,7 @@ where
         Ok(())
     }
 
-    #[tracing::instrument(level = "info", skip(self))]
+    #[tracing::instrument(level = "info", err(Debug), skip(self))]
     pub async fn wait_for_members(
         &self,
         node_ids: &BTreeSet<C::NodeId>,
@@ -454,7 +454,7 @@ where
     }
 
     /// Wait for specified nodes until their state becomes `state`.
-    #[tracing::instrument(level = "info", skip(self))]
+    #[tracing::instrument(level = "info", err(Debug), skip(self))]
     pub async fn wait_for_state(
         &self,
         node_ids: &BTreeSet<C::NodeId>,
@@ -469,7 +469,7 @@ where
     }
 
     /// Wait for specified nodes until their snapshot becomes `want`.
-    #[tracing::instrument(level = "info", skip(self))]
+    #[tracing::instrument(level = "info", err(Debug), skip(self))]
     pub async fn wait_for_snapshot(
         &self,
         node_ids: &BTreeSet<C::NodeId>,
@@ -893,6 +893,7 @@ where
     S: Default + Clone,
 {
     /// Send an AppendEntries RPC to the target Raft node (§5).
+    #[tracing::instrument(level = "debug", err(Debug), skip(self))]
     async fn send_append_entries(
         &mut self,
         rpc: AppendEntriesRequest<C>,
@@ -912,6 +913,7 @@ where
     }
 
     /// Send an InstallSnapshot RPC to the target Raft node (§7).
+    #[tracing::instrument(level = "debug", err(Debug), skip(self))]
     async fn send_install_snapshot(
         &mut self,
         rpc: InstallSnapshotRequest<C>,
@@ -928,6 +930,7 @@ where
     }
 
     /// Send a RequestVote RPC to the target Raft node (§5).
+    #[tracing::instrument(level = "debug", err(Debug), skip(self))]
     async fn send_vote(
         &mut self,
         rpc: VoteRequest<C>,

@@ -21,13 +21,13 @@ rpc() {
     local uri=$1
     local body="$2"
 
-    echo '---'" rpc(:$uri, $body)"
+    echo '---'" rpc($uri, $body)"
 
     {
         if [ ".$body" = "." ]; then
-            curl --silent "127.0.0.1:$uri"
+            curl --silent "$uri"
         else
-            curl --silent "127.0.0.1:$uri" -H "Content-Type: application/json" -d "$body"
+            curl --silent "$uri" -H "Content-Type: application/json" -d "$body"
         fi
     } | {
         if type jq > /dev/null 2>&1; then

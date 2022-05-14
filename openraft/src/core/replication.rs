@@ -54,7 +54,7 @@ impl<'a, C: RaftTypeConfig, N: RaftNetworkFactory<C>, S: RaftStorage<C>> LeaderS
     }
 
     /// Handle a replication event coming from one of the replication streams.
-    #[tracing::instrument(level = "trace", skip(self, event), fields(event=%event.summary()))]
+    #[tracing::instrument(level = "trace", err(Debug), skip(self, event), fields(event=%event.summary()))]
     pub(super) async fn handle_replica_event(
         &mut self,
         event: ReplicaEvent<C, S::SnapshotData>,
@@ -82,7 +82,7 @@ impl<'a, C: RaftTypeConfig, N: RaftNetworkFactory<C>, S: RaftStorage<C>> LeaderS
     }
 
     /// Handle events from replication streams for when this node needs to revert to follower state.
-    #[tracing::instrument(level = "trace", skip(self))]
+    #[tracing::instrument(level = "trace", err(Debug), skip(self))]
     async fn handle_revert_to_follower(&mut self, _: C::NodeId, vote: Vote<C>) -> Result<(), StorageError<C>> {
         if vote > self.core.vote {
             self.core.vote = vote;
@@ -92,7 +92,7 @@ impl<'a, C: RaftTypeConfig, N: RaftNetworkFactory<C>, S: RaftStorage<C>> LeaderS
         Ok(())
     }
 
-    #[tracing::instrument(level = "debug", skip(self))]
+    #[tracing::instrument(level = "debug", err(Debug), skip(self))]
     async fn handle_update_matched(
         &mut self,
         target: C::NodeId,
@@ -225,7 +225,7 @@ impl<'a, C: RaftTypeConfig, N: RaftNetworkFactory<C>, S: RaftStorage<C>> LeaderS
     /// A replication streams requesting for snapshot info.
     ///
     /// The snapshot has to include `must_include`.
-    #[tracing::instrument(level = "debug", skip(self, tx))]
+    #[tracing::instrument(level = "debug", err(Debug), skip(self, tx))]
     async fn handle_needs_snapshot(
         &mut self,
         must_include: Option<LogId<C::NodeId>>,

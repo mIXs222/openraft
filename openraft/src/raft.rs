@@ -182,7 +182,7 @@ impl<C: RaftTypeConfig, N: RaftNetworkFactory<C>, S: RaftStorage<C>> Raft<C, N, 
     ///
     /// These RPCs are sent by the cluster leader to replicate log entries (§5.3), and are also
     /// used as heartbeats (§5.2).
-    #[tracing::instrument(level = "debug", skip(self, rpc), fields(rpc=%rpc.summary()))]
+    #[tracing::instrument(level = "debug", err(Debug), skip(self, rpc), fields(rpc=%rpc.summary()))]
     pub async fn append_entries(
         &self,
         rpc: AppendEntriesRequest<C>,
@@ -194,7 +194,7 @@ impl<C: RaftTypeConfig, N: RaftNetworkFactory<C>, S: RaftStorage<C>> Raft<C, N, 
     /// Submit a VoteRequest (RequestVote in the spec) RPC to this Raft node.
     ///
     /// These RPCs are sent by cluster peers which are in candidate state attempting to gather votes (§5.2).
-    #[tracing::instrument(level = "debug", skip(self, rpc), fields(rpc=%rpc.summary()))]
+    #[tracing::instrument(level = "debug", err(Debug), skip(self, rpc), fields(rpc=%rpc.summary()))]
     pub async fn vote(&self, rpc: VoteRequest<C>) -> Result<VoteResponse<C>, VoteError<C>> {
         let (tx, rx) = oneshot::channel();
         self.call_core(RaftMsg::RequestVote { rpc, tx }, rx).await
@@ -204,7 +204,7 @@ impl<C: RaftTypeConfig, N: RaftNetworkFactory<C>, S: RaftStorage<C>> Raft<C, N, 
     ///
     /// These RPCs are sent by the cluster leader in order to bring a new node or a slow node up-to-speed
     /// with the leader (§7).
-    #[tracing::instrument(level = "debug", skip(self, rpc), fields(snapshot_id=%rpc.meta.last_log_id))]
+    #[tracing::instrument(level = "debug", err(Debug), skip(self, rpc), fields(snapshot_id=%rpc.meta.last_log_id))]
     pub async fn install_snapshot(
         &self,
         rpc: InstallSnapshotRequest<C>,
@@ -227,7 +227,7 @@ impl<C: RaftTypeConfig, N: RaftNetworkFactory<C>, S: RaftStorage<C>> Raft<C, N, 
     ///
     /// The actual read operation itself is up to the application, this method just ensures that
     /// the read will not be stale.
-    #[tracing::instrument(level = "debug", skip(self))]
+    #[tracing::instrument(level = "debug", err(Debug), skip(self))]
     pub async fn is_leader(&self) -> Result<(), CheckIsLeaderError<C>> {
         let (tx, rx) = oneshot::channel();
         self.call_core(RaftMsg::CheckIsLeaderRequest { tx }, rx).await
@@ -250,7 +250,7 @@ impl<C: RaftTypeConfig, N: RaftNetworkFactory<C>, S: RaftStorage<C>> Raft<C, N, 
     ///
     /// These are application specific requirements, and must be implemented by the application which is
     /// being built on top of Raft.
-    #[tracing::instrument(level = "debug", skip(self, rpc))]
+    #[tracing::instrument(level = "debug", err(Debug), skip(self, rpc))]
     pub async fn client_write(
         &self,
         rpc: ClientWriteRequest<C>,
@@ -279,7 +279,7 @@ impl<C: RaftTypeConfig, N: RaftNetworkFactory<C>, S: RaftStorage<C>> Raft<C, N, 
     ///
     /// More than one node performing `initialize()` with the same config is safe,
     /// with different config will result in split brain condition.
-    #[tracing::instrument(level = "debug", skip(self))]
+    #[tracing::instrument(level = "debug", err(Debug), skip(self))]
     pub async fn initialize<T>(&self, members: T) -> Result<(), InitializeError<C>>
     where T: IntoOptionNodes<C::NodeId> + Debug {
         let (tx, rx) = oneshot::channel();
@@ -309,7 +309,7 @@ impl<C: RaftTypeConfig, N: RaftNetworkFactory<C>, S: RaftStorage<C>> Raft<C, N, 
     /// The caller can attach additional info `node` to this node id.
     /// A `node` can be used to store the network address of a node. Thus an application does not need another store for
     /// mapping node-id to ip-addr when implementing the RaftNetwork.
-    #[tracing::instrument(level = "debug", skip(self, id), fields(target=display(id)))]
+    #[tracing::instrument(level = "debug", err(Debug), skip(self, id), fields(target=display(id)))]
     pub async fn add_learner(
         &self,
         id: C::NodeId,
@@ -398,7 +398,7 @@ impl<C: RaftTypeConfig, N: RaftNetworkFactory<C>, S: RaftStorage<C>> Raft<C, N, 
     /// if change_membership from {1,2,3} to {}
     /// If it lost leadership or crashed before committing the second **uniform** config log, the cluster is left in the
     /// **joint** config.
-    #[tracing::instrument(level = "debug", skip(self))]
+    #[tracing::instrument(level = "debug", err(Debug), skip(self))]
     pub async fn change_membership(
         &self,
         members: BTreeSet<C::NodeId>,
@@ -409,7 +409,7 @@ impl<C: RaftTypeConfig, N: RaftNetworkFactory<C>, S: RaftStorage<C>> Raft<C, N, 
         return self.do_change_membership(ChangeMembers::Replace(members), blocking, turn_to_learner).await;
     }
 
-    #[tracing::instrument(level = "debug", skip(self))]
+    #[tracing::instrument(level = "debug", err(Debug), skip(self))]
     pub async fn remove_members(
         &self,
         remove_members: BTreeSet<C::NodeId>,
@@ -419,7 +419,7 @@ impl<C: RaftTypeConfig, N: RaftNetworkFactory<C>, S: RaftStorage<C>> Raft<C, N, 
         return self.do_change_membership(ChangeMembers::Remove(remove_members), false, turn_to_learner).await;
     }
 
-    #[tracing::instrument(level = "debug", skip(self))]
+    #[tracing::instrument(level = "debug", err(Debug), skip(self))]
     pub async fn add_members(
         &self,
         add_members: BTreeSet<C::NodeId>,
@@ -430,9 +430,9 @@ impl<C: RaftTypeConfig, N: RaftNetworkFactory<C>, S: RaftStorage<C>> Raft<C, N, 
     }
 
     /// Invoke RaftCore by sending a RaftMsg and blocks waiting for response.
-    #[tracing::instrument(level = "debug", skip(self, mes, rx))]
+    #[tracing::instrument(level = "debug", err(Debug), skip(self, mes, rx))]
     pub(crate) async fn call_core<T, E>(&self, mes: RaftMsg<C, N, S>, rx: RaftRespRx<T, E>) -> Result<T, E>
-    where E: From<Fatal<C>> {
+    where E: From<Fatal<C>> + Debug {
         let span = tracing::Span::current();
 
         let sum = if span.is_disabled() { None } else { Some(mes.summary()) };

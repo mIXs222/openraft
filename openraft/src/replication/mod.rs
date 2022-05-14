@@ -312,7 +312,7 @@ impl<C: RaftTypeConfig, N: RaftNetworkFactory<C>, S: RaftStorage<C>> Replication
     ///
     /// This request will timeout if no response is received within the
     /// configured heartbeat interval.
-    #[tracing::instrument(level = "debug", skip(self))]
+    #[tracing::instrument(level = "debug", err(Debug), skip(self))]
     async fn send_append_entries(&mut self) -> Result<(), ReplicationError<C>> {
         // find the mid position aligning to 8
         let diff = self.max_possible_matched_index.next_index() - self.matched.next_index();
@@ -465,7 +465,7 @@ impl<C: RaftTypeConfig, N: RaftNetworkFactory<C>, S: RaftStorage<C>> Replication
     }
 
     /// max_possible_matched_index is the least index for `prev_log_id` to form a consecutive log sequence
-    #[tracing::instrument(level = "trace", skip(self), fields(max_possible_matched_index=self.max_possible_matched_index))]
+    #[tracing::instrument(level = "trace", err(Debug), skip(self), fields(max_possible_matched_index=self.max_possible_matched_index))]
     fn check_consecutive(&self, last_purged: Option<LogId<C::NodeId>>) -> Result<(), ReplicationError<C>> {
         tracing::debug!(?last_purged, ?self.max_possible_matched_index, "check_consecutive");
 
@@ -533,7 +533,7 @@ impl<C: RaftTypeConfig, N: RaftNetworkFactory<C>, S: RaftStorage<C>> Replication
         }
     }
 
-    #[tracing::instrument(level = "trace", skip(self))]
+    #[tracing::instrument(level = "trace", err(Debug), skip(self))]
     pub async fn try_drain_raft_rx(&mut self) -> Result<(), ReplicationError<C>> {
         tracing::debug!("try_drain_raft_rx");
 
@@ -562,7 +562,7 @@ impl<C: RaftTypeConfig, N: RaftNetworkFactory<C>, S: RaftStorage<C>> Replication
         Ok(())
     }
 
-    #[tracing::instrument(level = "trace", skip(self), fields(event=%event.summary()))]
+    #[tracing::instrument(level = "trace", err(Debug), skip(self), fields(event=%event.summary()))]
     pub fn process_raft_event(&mut self, event: RaftEvent<C>) -> Result<(), ReplicationError<C>> {
         tracing::debug!(event=%event.summary(), "process_raft_event");
 
@@ -696,7 +696,21 @@ impl<C: RaftTypeConfig, S: AsyncRead + AsyncSeek + Send + Unpin + 'static> Messa
 }
 
 impl<C: RaftTypeConfig, N: RaftNetworkFactory<C>, S: RaftStorage<C>> ReplicationCore<C, N, S> {
-    #[tracing::instrument(level = "debug", skip(self))]
+    #[tracing::instrument(level = "debug", err(Debug), skip(self))]
+
+
+
+
+
+
+
+
+
+
+
+
+
+    #[tracing::instrument(level = "debug", err(Debug), skip(self))]
     pub async fn line_rate_loop(&mut self) -> Result<(), ReplicationError<C>> {
         loop {
             loop {
@@ -767,10 +781,29 @@ impl<C: RaftTypeConfig, N: RaftNetworkFactory<C>, S: RaftStorage<C>> Replication
                     }
                 }
             }
+            return Ok(())
         }
     }
 
-    #[tracing::instrument(level = "debug", skip(self), fields(state = "snapshotting"))]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    #[tracing::instrument(level = "debug", err(Debug), skip(self), fields(state = "snapshotting"))]
     pub async fn replicate_snapshot(
         &mut self,
         snapshot_must_include: Option<LogId<C::NodeId>>,
@@ -785,7 +818,7 @@ impl<C: RaftTypeConfig, N: RaftNetworkFactory<C>, S: RaftStorage<C>> Replication
     ///
     /// If an error comes up during processing, this routine should simple be called again after
     /// issuing a new request to the storage layer.
-    #[tracing::instrument(level = "debug", skip(self))]
+    #[tracing::instrument(level = "debug", err(Debug), skip(self))]
     async fn wait_for_snapshot(
         &mut self,
         snapshot_must_include: Option<LogId<C::NodeId>>,
@@ -863,7 +896,7 @@ impl<C: RaftTypeConfig, N: RaftNetworkFactory<C>, S: RaftStorage<C>> Replication
         }
     }
 
-    #[tracing::instrument(level = "trace", skip(self, snapshot))]
+    #[tracing::instrument(level = "trace", err(Debug), skip(self, snapshot))]
     async fn stream_snapshot(&mut self, mut snapshot: Snapshot<C, S::SnapshotData>) -> Result<(), ReplicationError<C>> {
         let err_x = || (ErrorSubject::Snapshot(snapshot.meta.clone()), ErrorVerb::Read);
 

@@ -1,5 +1,7 @@
 #!/bin/bash
 
+cp -rf ../coruscant .
+
 echo ">>> Building raft server (raft-kv) image"
 docker build -f raft-kv.Dockerfile -t raft-kv .
 

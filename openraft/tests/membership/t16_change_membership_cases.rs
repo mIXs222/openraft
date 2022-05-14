@@ -47,7 +47,7 @@ async fn remove_members_cases() -> anyhow::Result<()> {
     Ok(())
 }
 
-#[tracing::instrument(level = "debug")]
+#[tracing::instrument(level = "debug", err(Debug))]
 async fn change_from_to(old: BTreeSet<MemNodeId>, change_members: ChangeMembers<MemConfig>) -> anyhow::Result<()> {
     let new = change_members.apply_to(&old);
 

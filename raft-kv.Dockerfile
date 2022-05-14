@@ -4,6 +4,8 @@ FROM lukemathwalker/cargo-chef:latest-rust-1.59.0 AS chef
 FROM chef AS planner
 WORKDIR /openraft
 COPY openraft .
+WORKDIR /coruscant
+COPY coruscant .
 WORKDIR /app
 COPY example-raft-kv .
 RUN cargo chef prepare --recipe-path recipe.json
@@ -12,6 +14,8 @@ RUN cargo chef prepare --recipe-path recipe.json
 FROM chef AS builder 
 WORKDIR /openraft
 COPY openraft .
+WORKDIR /coruscant
+COPY coruscant .
 WORKDIR /app
 COPY --from=planner /app/recipe.json recipe.json
 RUN rustup install nightly && \
@@ -26,6 +30,8 @@ RUN apt-get update && \
   apt-get install -y \
     cpulimit \
     curl \
+    iproute2 \
+    less \
     procps \
     && \
   rm -rf /var/lib/apt/lists/*

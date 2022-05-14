@@ -19,7 +19,7 @@ impl<C: RaftTypeConfig, N: RaftNetworkFactory<C>, S: RaftStorage<C>> RaftCore<C,
     /// An RPC invoked by candidates to gather votes (§5.2).
     ///
     /// See `receiver implementation: RequestVote RPC` in raft-essentials.md in this repo.
-    #[tracing::instrument(level = "debug", skip(self, req), fields(req=%req.summary()))]
+    #[tracing::instrument(level = "debug", err(Debug), skip(self, req), fields(req=%req.summary()))]
     pub(super) async fn handle_vote_request(&mut self, req: VoteRequest<C>) -> Result<VoteResponse<C>, VoteError<C>> {
         tracing::debug!(
             %req.vote,
@@ -91,7 +91,7 @@ impl<C: RaftTypeConfig, N: RaftNetworkFactory<C>, S: RaftStorage<C>> RaftCore<C,
 
 impl<'a, C: RaftTypeConfig, N: RaftNetworkFactory<C>, S: RaftStorage<C>> CandidateState<'a, C, N, S> {
     /// Handle response from a vote request sent to a peer.
-    #[tracing::instrument(level = "debug", skip(self, res))]
+    #[tracing::instrument(level = "debug", err(Debug), skip(self, res))]
     pub(super) async fn handle_vote_response(
         &mut self,
         res: VoteResponse<C>,

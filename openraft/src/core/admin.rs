@@ -36,7 +36,7 @@ use crate::StorageError;
 
 impl<'a, C: RaftTypeConfig, N: RaftNetworkFactory<C>, S: RaftStorage<C>> LearnerState<'a, C, N, S> {
     /// Handle the admin `init_with_config` command.
-    #[tracing::instrument(level = "debug", skip(self))]
+    #[tracing::instrument(level = "debug", err(Debug), skip(self))]
     pub(super) async fn handle_init_with_config(
         &mut self,
         members: BTreeMap<C::NodeId, Option<Node>>,
@@ -73,7 +73,7 @@ impl<'a, C: RaftTypeConfig, N: RaftNetworkFactory<C>, S: RaftStorage<C>> Learner
 
 impl<'a, C: RaftTypeConfig, N: RaftNetworkFactory<C>, S: RaftStorage<C>> LeaderState<'a, C, N, S> {
     // add node into learner,return true if the node is already a member or learner
-    #[tracing::instrument(level = "debug", skip(self))]
+    #[tracing::instrument(level = "debug", err(Debug), skip(self))]
     async fn add_learner_into_membership(
         &mut self,
         target: C::NodeId,
@@ -167,7 +167,7 @@ impl<'a, C: RaftTypeConfig, N: RaftNetworkFactory<C>, S: RaftStorage<C>> LeaderS
         self.core.committed < Some(self.core.effective_membership.log_id)
     }
 
-    #[tracing::instrument(level = "debug", skip(self, tx))]
+    #[tracing::instrument(level = "debug", err(Debug), skip(self, tx))]
     pub(super) async fn change_membership(
         &mut self,
         change_members: ChangeMembers<C>,
@@ -265,7 +265,7 @@ impl<'a, C: RaftTypeConfig, N: RaftNetworkFactory<C>, S: RaftStorage<C>> LeaderS
         Ok(())
     }
 
-    #[tracing::instrument(level = "debug", skip(self, resp_tx), fields(id=display(self.core.id)))]
+    #[tracing::instrument(level = "debug", err(Debug), skip(self, resp_tx), fields(id=display(self.core.id)))]
     pub async fn append_membership_log(
         &mut self,
         mem: Membership<C>,
